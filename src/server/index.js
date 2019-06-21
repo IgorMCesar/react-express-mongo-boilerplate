@@ -6,22 +6,20 @@ const { ApolloServer } = require('apollo-server-express');
 // TODO Async-Await
 require('./config/database');
 
-// #3 Import GraphQL type definitions
+// #3 Import GraphQL type definitions and resolvers
 const typeDefs = require('./typeDefs');
-
-// #4 Import GraphQL resolvers
 const resolvers = require('./resolvers');
 
-// #5 Initialize an Express application
+// #4 Initialize an Express application
 const app = express();
 
-// #6 Disable unwanted Headers
+// #5 Disable unwanted Headers
 app.disable('x-powered-by');
 
-// #7 Serve react application
+// #6 Serve react application
 app.use(express.static('dist'));
 
-// #8 Use the Express application as middleware in Apollo server
+// #7 Use the Express application as middleware in Apollo server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -29,7 +27,7 @@ const server = new ApolloServer({
 });
 server.applyMiddleware({ app });
 
-// #9 Set the port that the Express application will listen to
+// #8 Set the port that the Express application will listen to
 app.listen({ port: process.env.PORT || 8080 }, () => {
   console.log(`Listening on port ${process.env.PORT || 8080}!`);
 });
