@@ -24,27 +24,24 @@ const server = new ApolloServer({
 });
 server.applyMiddleware({ app });
 
-mongoose
-  .connect(process.env.MONGO_DB_URI, { useNewUrlParser: true })
-  .then(() => {
-    app.use(
-      session({
-        store: new MongoStore({ mongooseConnection: mongoose.connection }),
-        name: 'sid',
-        secret: 'shh!secret!',
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-          maxAge: 1000 * 60 * 60 * 2,
-          sameSite: true,
-          secure: !process.env.NODE_ENV.trim() === 'development'
-        }
-      })
-    );
-    app.listen({ port: process.env.PORT || 8080 }, () => {
-      console.log(`Listening on port ${process.env.PORT || 8080}!`);
-    });
-  })
-  .catch((err) => {
-    console.error(err);
+mongoose.connect(process.env.MONGO_DB_URI, { useNewUrlParser: true });
+mongoose.connection.once('open', () => {
+  app.use(
+    session({
+      store: new MongoStore({ mongooseConnection: mongoose.connection }),
+      name: 'sid',
+      secret: 'shh!secret!',
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        maxAge: 1000 * 60 * 60 * 2,
+        sameSite: true,
+        secure: !process.env.NODE_ENV.trim() === 'development'
+      }
+    })
+  );
+  app.listen({ port: process.env.PORT || 8080 }, () => {
+    console.log(`Listening on port ${process.env.PORT || 8080}!`);
   });
+});
+mongoose.connection.on('error', error => console.error(error));
