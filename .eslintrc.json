@@ -21,6 +21,8 @@
   "rules": {
     "no-console": "off",
     "comma-dangle": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "linebreak-style": 0,
+    "func-names": 0
   }
 }

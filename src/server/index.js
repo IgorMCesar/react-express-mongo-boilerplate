@@ -1,25 +1,22 @@
-// #1 Import Express and Apollo Server
 const express = require('express');
+const helmet = require('helmet');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const { ApolloServer } = require('apollo-server-express');
 
-// #2 Import mongoose
-// TODO Async-Await
-require('./config/database');
+const typeDefs = require('./graphql/typeDefs');
+const resolvers = require('./graphql/resolvers');
 
-// #3 Import GraphQL type definitions and resolvers
-const typeDefs = require('./typeDefs');
-const resolvers = require('./resolvers');
-
-// #4 Initialize an Express application
 const app = express();
 
-// #5 Disable unwanted Headers
-app.disable('x-powered-by');
+// Set Secure Headers with Helmet
+app.use(helmet());
+app.use(helmet.permittedCrossDomainPolicies());
 
-// #6 Serve react application
+// Serve react application
 app.use(express.static('dist'));
 
-// #7 Use the Express application as middleware in Apollo server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -27,11 +24,27 @@ const server = new ApolloServer({
 });
 server.applyMiddleware({ app });
 
-// #8 Set the port that the Express application will listen to
-app.listen({ port: process.env.PORT || 8080 }, () => {
-  console.log(`Listening on port ${process.env.PORT || 8080}!`);
-});
-
-// app.get('/api/getUsername', (req, res) => {
-//   res.send({ username: os.userInfo().username });
-// });
+mongoose
+  .connect(process.env.MONGO_DB_URI, { useNewUrlParser: true })
+  .then(() => {
+    app.use(
+      session({
+        store: new MongoStore({ mongooseConnection: mongoose.connection }),
+        name: 'sid',
+        secret: 'shh!secret!',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+          maxAge: 1000 * 60 * 60 * 2,
+          sameSite: true,
+          secure: !process.env.NODE_ENV.trim() === 'development'
+        }
+      })
+    );
+    app.listen({ port: process.env.PORT || 8080 }, () => {
+      console.log(`Listening on port ${process.env.PORT || 8080}!`);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
