@@ -1,3 +1,4 @@
-const signUp = require('./user');
+const user = require('./user');
+const root = require('./root');
 
-module.exports = { signUp };
+module.exports = [user, root];

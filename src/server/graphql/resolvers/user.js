@@ -1,46 +1,60 @@
 /* eslint-disable no-unused-vars */
 const Joi = require('joi');
 const mongoose = require('mongoose');
-const { hash } = require('bcryptjs');
 const { UserInputError } = require('apollo-server-express');
-const { signUp } = require('../schemas');
 const { User } = require('../../models');
-
-// async function doesntExist(args) {
-//   let existingUser = await User.findOne({ email: args.email });
-//   if (existingUser) {
-//     throw new Error(`Email ${args.email} has already been taken.`);
-//   }
-//   existingUser = await User.findOne({ email: args.username });
-//   if (existingUser) {
-//     throw new Error(`Username ${args.username} has already been taken.`);
-//   }
-// }
+const validators = require('../validators');
+const Auth = require('../../helpers/auth');
 
 module.exports = {
   Query: {
-    users: (root, args, context, info) => {
-      // TODO: auth, projection, pagination, sanitization
-      console.log('a');
-      return User.find({});
-    },
-    user: (root, args, context, info) => {
-      // TODO: auth, projection
+    // TODO: projection, pagination, sanitization
+    users: (root, args, context, info) => User.find({}),
+    user: async (root, args, context, info) => {
+      // TODO: projection
       if (!mongoose.Types.ObjectId.isValid(args.id)) {
         throw new UserInputError(`${args.id} is not a valid user ID.`);
       }
+      // await Joi.validate(args, validators.object.objectId);
 
       return User.findById(args.id);
     }
   },
   Mutation: {
     signUp: async (root, args, context, info) => {
-      await Joi.validate(args, signUp, { abortEarly: false });
-      // await doesntExist(args);
+      await Joi.validate(args, validators.user.signUp, { abortEarly: false });
 
-      const password = await hash(args.password, 12);
+      const user = await User.create(args);
 
-      return User.create({ ...args, password });
+      context.req.session.userId = user.id;
+
+      return user;
+    },
+    LogIn: async (root, args, context, info) => {
+      await Joi.validate(args, validators.user.LogIn, { abortEarly: false });
+
+      const user = await Auth.attemptLogIn(args.email, args.password);
+
+      context.req.session.userId = user.id;
+
+      return user;
+    },
+    LogOut: async (root, args, context, info) => Auth.LogOut(context.req, context.res),
+    ChangePassword: async (root, args, context, info) => {
+      await Joi.validate(args, validators.user.ChangePassword, { abortEarly: false });
+
+      const newPassword = await Auth.verifyPasswordChange(
+        context.req,
+        args.password,
+        args.newPassword
+      );
+
+      const res = await User.updateOne(
+        { _id: context.req.session.userId },
+        { password: newPassword }
+      );
+
+      return res.nModified > 0;
     }
   }
 };

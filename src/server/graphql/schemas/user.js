@@ -1,33 +1,24 @@
-const Joi = require('joi');
+const { gql } = require('apollo-server-express');
 
-module.exports = Joi.object().keys({
-  email: Joi.string()
-    .email()
-    .required()
-    .label('Email'),
-  username: Joi.string()
-    .alphanum()
-    .min(4)
-    .max(30)
-    .required()
-    .label('Username'),
-  name: Joi.string()
-    .max(254)
-    .required()
-    .label('Name'),
-  password: Joi.string()
-    .required()
-    .label('Password')
-    .min(8)
-    .max(50)
-    .regex(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)
-    .options({
-      language: {
-        string: {
-          regex: {
-            base: 'must have at least one letter and one digit.'
-          }
-        }
-      }
-    })
-});
+module.exports = gql`
+  type User {
+    id: ID!
+    email: String!
+    username: String!
+    name: String!
+    createdAt: String!
+    updatedAt: String!
+  }
+
+  extend type Query {
+    user(id: ID!): User @auth
+    users: [User!]! @auth
+  }
+
+  extend type Mutation {
+    signUp(email: String!, username: String!, name: String!, password: String!): User @guest
+    LogIn(email: String!, password: String!): User @guest
+    LogOut: Boolean @auth
+    ChangePassword(password: String!, newPassword: String!): Boolean @auth
+  }
+`;
