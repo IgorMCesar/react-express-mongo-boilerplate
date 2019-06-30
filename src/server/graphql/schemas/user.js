@@ -6,8 +6,8 @@ module.exports = gql`
     email: String!
     username: String!
     name: String!
-    createdAt: String!
-    updatedAt: String!
+    createdAt: String! @auth(role: ADMIN)
+    updatedAt: String! @auth(role: ADMIN)
   }
 
   extend type Query {

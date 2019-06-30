@@ -24,7 +24,9 @@ exports.LogOut = (req, res) => new Promise((resolve, reject) => {
   });
 });
 
-const loggedIn = req => req.session.userId;
+const loggedIn = req => req.session.userInfo.id;
+
+const Authorized = req => req.session.userInfo.role;
 
 exports.verifyPasswordChange = async (req, password, newPassword) => {
   let message = 'Same password used. Please choose a new one.';
@@ -54,5 +56,11 @@ exports.ensureLoggedIn = (req) => {
 exports.ensureLoggedOut = (req) => {
   if (loggedIn(req)) {
     throw new AuthenticationError('You are already logged in.');
+  }
+};
+
+exports.ensureAuthorized = (req, requiredRole) => {
+  if (Authorized(req) !== requiredRole) {
+    throw new AuthenticationError('You are not Authorized.');
   }
 };

@@ -24,9 +24,15 @@ module.exports = {
     signUp: async (root, args, context, info) => {
       await Joi.validate(args, validators.user.signUp, { abortEarly: false });
 
+      args.role = 'USER';
+
       const user = await User.create(args);
 
-      context.req.session.userId = user.id;
+      // TODO: Send Email to verify
+      context.req.session.userInfo = {
+        id: user.id,
+        role: user.role
+      };
 
       return user;
     },
@@ -35,7 +41,10 @@ module.exports = {
 
       const user = await Auth.attemptLogIn(args.email, args.password);
 
-      context.req.session.userId = user.id;
+      context.req.session.userInfo = {
+        id: user.id,
+        role: user.role
+      };
 
       return user;
     },
@@ -50,7 +59,7 @@ module.exports = {
       );
 
       const res = await User.updateOne(
-        { _id: context.req.session.userId },
+        { _id: context.req.session.userInfo.id },
         { password: newPassword }
       );
 
