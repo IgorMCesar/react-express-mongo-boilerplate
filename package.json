@@ -10,7 +10,7 @@
     "build": "webpack --mode production",
     "start": "npm run build && node src/server/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
-    "server": "SET NODE_ENV=development & nodemon src/server/index.js",
+    "server": "nodemon -r dotenv/config src/server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
@@ -41,6 +41,7 @@
     "babel-plugin-graphql-tag": "^2.4.0",
     "concurrently": "^4.1.0",
     "css-loader": "^2.1.1",
+    "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.17.3",
