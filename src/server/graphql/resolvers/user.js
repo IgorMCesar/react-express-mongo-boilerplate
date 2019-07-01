@@ -29,10 +29,8 @@ module.exports = {
       const user = await User.create(args);
 
       // TODO: Send Email to verify
-      context.req.session.userInfo = {
-        id: user.id,
-        role: user.role
-      };
+      context.req.session.userId = user.id;
+      context.req.session.userRole = user.role;
 
       return user;
     },
@@ -41,10 +39,8 @@ module.exports = {
 
       const user = await Auth.attemptLogIn(args.email, args.password);
 
-      context.req.session.userInfo = {
-        id: user.id,
-        role: user.role
-      };
+      context.req.session.userId = user.id;
+      context.req.session.userRole = user.role;
 
       return user;
     },
@@ -59,7 +55,7 @@ module.exports = {
       );
 
       const res = await User.updateOne(
-        { _id: context.req.session.userInfo.id },
+        { _id: context.req.session.userId },
         { password: newPassword }
       );
 

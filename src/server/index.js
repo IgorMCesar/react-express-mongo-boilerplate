@@ -2,6 +2,8 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const MongoStore = require('connect-mongo')(session);
 const { ApolloServer } = require('apollo-server-express');
 
@@ -32,7 +34,7 @@ app.use(
     rolling: true,
     saveUninitialized: false,
     cookie: {
-      maxAge: SESSION_MAX_AGE,
+      maxAge: parseInt(SESSION_MAX_AGE, 10),
       sameSite: true,
       secure: !NODE_ENV.trim() === 'development'
     }
@@ -48,11 +50,26 @@ const server = new ApolloServer({
       ? false
       : {
         settings: {
-          'request.credentials': 'include'
+          'request.credentials': 'include',
+          'schema.polling.enable': false
         }
       },
   context: ({ req, res }) => ({ req, res })
 });
+
+// Logging with Morgan
+if (NODE_ENV === 'development') {
+  morgan.token('graphql-query', (req) => {
+    const { query, variables, operationName } = req.body;
+    return `GRAPHQL: \nOperation Name: ${operationName} \nQuery: ${query} \nVariables: ${JSON.stringify(
+      variables
+    )}`;
+  });
+
+  app.use(bodyParser.json());
+
+  app.use(morgan(':graphql-query'));
+}
 
 server.applyMiddleware({ app, cors: false });
 

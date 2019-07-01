@@ -24,9 +24,9 @@ exports.LogOut = (req, res) => new Promise((resolve, reject) => {
   });
 });
 
-const loggedIn = req => req.session.userInfo.id;
+const loggedIn = req => req.session.userId;
 
-const Authorized = req => req.session.userInfo.role;
+const Authorized = req => req.session.userRole;
 
 exports.verifyPasswordChange = async (req, password, newPassword) => {
   let message = 'Same password used. Please choose a new one.';
