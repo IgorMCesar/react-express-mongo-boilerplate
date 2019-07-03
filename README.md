@@ -28,10 +28,9 @@ React Node Boilerplate is a MERN stack with GraphQL.
 
 Start by cloning this repository locally with `git clone https://github.com/IgorMCesar/react-node-boilerplate.git`
 
+Make sure you have node installed.
 
 ### Installing
-
-Make sure you have node installed.
 
 Then Install all npm packages:
 
