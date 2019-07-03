@@ -14,6 +14,12 @@ React Node Boilerplate is a MERN stack with GraphQL.
 * Morgan
 * Body-parser
 * GraphQL
+* Helmet
+* Joi
+* Mongoose
+* Express-session
+* Lodash
+* Bcryptjs
 
 ## React Node Boilerplate will include:
 * Ant Design
