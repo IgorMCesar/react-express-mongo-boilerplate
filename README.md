@@ -3,7 +3,6 @@
 React Node Boilerplate is a MERN stack with GraphQL.
 
 ## React Node Boilerplate includes:
-﻿# react-node-boilerplaten
 
 * React
 * Redux
