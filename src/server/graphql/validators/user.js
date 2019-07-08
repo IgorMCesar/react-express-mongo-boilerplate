@@ -1,4 +1,5 @@
 const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 
 const email = Joi.string()
   .email()
@@ -33,6 +34,10 @@ const password = Joi.string()
     }
   });
 
+exports.findUser = Joi.object().keys({
+  id: Joi.objectId()
+});
+
 exports.signUp = Joi.object().keys({
   email,
   username,
@@ -48,4 +53,8 @@ exports.LogIn = Joi.object().keys({
 exports.ChangePassword = Joi.object().keys({
   password,
   newPassword: password
+});
+
+exports.resendSignUpToken = Joi.object().keys({
+  email
 });

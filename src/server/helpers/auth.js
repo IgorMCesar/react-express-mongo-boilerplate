@@ -1,13 +1,16 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { hash } = require('bcryptjs');
-const { User } = require('../models');
+const { User } = require('../models/models');
 
 exports.attemptLogIn = async (email, password) => {
-  const message = 'Incorrect email or password. Please try again.';
+  let message = 'Incorrect email or password. Please try again.';
 
   const user = await User.findOne({ email });
 
   if (!user || !(await user.matchesPassword(password))) {
+    throw new AuthenticationError(message);
+  } else if (!user.isVerified) {
+    message = 'User not verified, check your email!';
     throw new AuthenticationError(message);
   }
 

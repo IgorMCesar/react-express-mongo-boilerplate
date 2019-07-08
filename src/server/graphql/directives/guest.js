@@ -8,6 +8,7 @@ class GuestDirective extends SchemaDirectiveVisitor {
 
     field.resolve = function (...args) {
       const context = args[2];
+      console.log('guest', context.req);
 
       ensureLoggedOut(context.req);
 

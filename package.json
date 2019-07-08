@@ -27,10 +27,12 @@
     "graphql": "^14.3.1",
     "helmet": "^3.18.0",
     "joi": "^14.3.1",
+    "joi-objectid": "^2.0.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "mongoose": "^5.6.0",
     "morgan": "^1.9.1",
+    "nodemailer": "^6.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },

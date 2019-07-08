@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 const Joi = require('joi');
 const mongoose = require('mongoose');
-const { UserInputError } = require('apollo-server-express');
-const { User } = require('../../models');
-const validators = require('../validators');
+const { UserInputError, ApolloError } = require('apollo-server-express');
+const { User } = require('../../models/models');
+const validators = require('../validators/validators');
 const Auth = require('../../helpers/auth');
+const { verifyToken, sendEmailWithToken } = require('../../helpers/token');
 
 module.exports = {
   Query: {
@@ -12,10 +13,7 @@ module.exports = {
     users: (root, args, context, info) => User.find({}),
     user: async (root, args, context, info) => {
       // TODO: projection
-      if (!mongoose.Types.ObjectId.isValid(args.id)) {
-        throw new UserInputError(`${args.id} is not a valid user ID.`);
-      }
-      // await Joi.validate(args, validators.object.objectId);
+      await Joi.validate(args, validators.user.findUser);
 
       return User.findById(args.id);
     }
@@ -24,15 +22,35 @@ module.exports = {
     signUp: async (root, args, context, info) => {
       await Joi.validate(args, validators.user.signUp, { abortEarly: false });
 
-      args.role = 'USER';
-
       const user = await User.create(args);
 
-      // TODO: Send Email to verify
-      context.req.session.userId = user.id;
-      context.req.session.userRole = user.role;
+      await sendEmailWithToken(user, 'signUp');
 
       return user;
+    },
+    resendSignUpToken: async (root, args, context, info) => {
+      await Joi.validate(args, validators.user.resendSignUpToken, { abortEarly: false });
+
+      const user = await User.findOne({ email: args.email });
+
+      if (!user) {
+        throw new UserInputError('Email not found.');
+      } else if (user.isVerified) {
+        throw new ApolloError('User already verified.', 'USER_ALREADY_VERIFIED');
+      }
+
+      const token = await sendEmailWithToken(user.email, 'signUp');
+
+      return !!token._id;
+    },
+    verifyUser: async (root, args, context, info) => {
+      // await Joi.validate(args, validators.token.)
+
+      const verifiedToken = await verifyToken(args.token, 'signUp');
+
+      const res = await User.updateOne({ _id: verifiedToken.user }, { isVerified: true });
+
+      return !!res.nModified > 0;
     },
     LogIn: async (root, args, context, info) => {
       await Joi.validate(args, validators.user.LogIn, { abortEarly: false });

@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 const mongoose = require('mongoose');
 const { hash, compare } = require('bcryptjs');
 
@@ -22,7 +21,14 @@ const userSchema = new Schema(
     },
     name: String,
     password: String,
-    role: String
+    isVerified: {
+      type: Boolean,
+      default: false
+    },
+    role: {
+      type: String,
+      default: 'USER'
+    }
   },
   {
     timestamps: true
