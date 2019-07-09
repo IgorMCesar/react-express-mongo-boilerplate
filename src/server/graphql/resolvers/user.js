@@ -29,7 +29,7 @@ module.exports = {
       return user;
     },
     resendSignUpToken: async (root, args, context, info) => {
-      await Joi.validate(args, validators.user.resendSignUpToken, { abortEarly: false });
+      await Joi.validate(args, validators.user.sendUserToken, { abortEarly: false });
 
       const user = await User.findOne({ email: args.email });
 
@@ -39,12 +39,12 @@ module.exports = {
         throw new ApolloError('User already verified.', 'USER_ALREADY_VERIFIED');
       }
 
-      const token = await sendEmailWithToken(user.email, 'signUp');
+      const token = await sendEmailWithToken(user, 'signUp');
 
       return !!token._id;
     },
     verifyUser: async (root, args, context, info) => {
-      // await Joi.validate(args, validators.token.)
+      // TODO: await Joi.validate(args, validators.token.)
 
       const verifiedToken = await verifyToken(args.token, 'signUp');
 
@@ -78,6 +78,31 @@ module.exports = {
       );
 
       return res.nModified > 0;
+    },
+    ChangePasswordWithToken: async (root, args, context, info) => {
+      // TODO: await Joi.validate(args, validators.token.)
+      // TODO: validate new password
+
+      const verifiedToken = await verifyToken(args.token, 'forgotPassword');
+
+      const newPassword = await Auth.verifyForgotPasswordChange(verifiedToken, args.newPassword);
+
+      const res = await User.updateOne({ _id: verifiedToken.user }, { password: newPassword });
+
+      return !!res.nModified > 0;
+    },
+    forgotPassword: async (root, args, context, info) => {
+      await Joi.validate(args, validators.user.sendUserToken, { abortEarly: false });
+
+      const user = await User.findOne({ email: args.email });
+
+      if (!user) {
+        throw new UserInputError('Email not found.');
+      }
+
+      const token = await sendEmailWithToken(user, 'forgotPassword');
+
+      return !!token._id;
     }
   }
 };

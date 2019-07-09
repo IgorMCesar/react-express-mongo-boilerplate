@@ -55,6 +55,6 @@ exports.ChangePassword = Joi.object().keys({
   newPassword: password
 });
 
-exports.resendSignUpToken = Joi.object().keys({
+exports.sendUserToken = Joi.object().keys({
   email
 });

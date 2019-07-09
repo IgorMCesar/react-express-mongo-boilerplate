@@ -18,6 +18,8 @@ const {
 
 const app = express();
 
+mongoose.set('useCreateIndex', true);
+
 // Set Secure Headers with Helmet
 app.use(helmet());
 app.use(helmet.permittedCrossDomainPolicies());

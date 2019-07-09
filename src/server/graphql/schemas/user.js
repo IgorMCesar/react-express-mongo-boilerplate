@@ -25,6 +25,6 @@ module.exports = gql`
     LogOut: Boolean @auth
     ChangePassword(password: String!, newPassword: String!): Boolean @auth
     ChangePasswordWithToken(newPassword: String!, token: String!): Boolean @guest
-    forgotPassword(email: String!): User @guest
+    forgotPassword(email: String!): Boolean @guest
   }
 `;

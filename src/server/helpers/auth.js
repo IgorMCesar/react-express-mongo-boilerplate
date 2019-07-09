@@ -50,6 +50,22 @@ exports.verifyPasswordChange = async (req, password, newPassword) => {
   return newPassword;
 };
 
+exports.verifyForgotPasswordChange = async (verifiedToken, newPassword) => {
+  const message = 'Same password used. Please choose a new one.';
+
+  const user = await User.findOne({ _id: verifiedToken.user });
+
+  console.log(user);
+
+  if (!user || (await user.matchesPassword(newPassword))) {
+    throw new AuthenticationError(message);
+  }
+
+  newPassword = await hash(newPassword, 12);
+
+  return newPassword;
+};
+
 exports.ensureLoggedIn = (req) => {
   if (!loggedIn(req)) {
     throw new AuthenticationError('You must be logged in.');
