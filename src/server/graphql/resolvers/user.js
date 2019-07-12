@@ -44,7 +44,7 @@ module.exports = {
       return !!token._id;
     },
     verifyUser: async (root, args, context, info) => {
-      // TODO: await Joi.validate(args, validators.token.)
+      await Joi.validate(args, validators.user.verifyUser);
 
       const verifiedToken = await verifyToken(args.token, 'signUp');
 
@@ -80,8 +80,7 @@ module.exports = {
       return res.nModified > 0;
     },
     ChangePasswordWithToken: async (root, args, context, info) => {
-      // TODO: await Joi.validate(args, validators.token.)
-      // TODO: validate new password
+      await Joi.validate(args, validators.user.ChangePasswordWithToken);
 
       const verifiedToken = await verifyToken(args.token, 'forgotPassword');
 

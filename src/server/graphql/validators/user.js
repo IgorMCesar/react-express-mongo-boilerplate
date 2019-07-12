@@ -34,6 +34,10 @@ const password = Joi.string()
     }
   });
 
+const token = Joi.string()
+  .token()
+  .length(32);
+
 exports.findUser = Joi.object().keys({
   id: Joi.objectId()
 });
@@ -57,4 +61,13 @@ exports.ChangePassword = Joi.object().keys({
 
 exports.sendUserToken = Joi.object().keys({
   email
+});
+
+exports.verifyUser = Joi.object().keys({
+  token
+});
+
+exports.ChangePasswordWithToken = Joi.object().keys({
+  token,
+  newPassword: password
 });

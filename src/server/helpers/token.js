@@ -4,7 +4,8 @@ const { Token } = require('../models/models');
 const { sendEmail } = require('../utils/sendEmail');
 
 exports.sendEmailWithToken = async (user, action) => {
-  // TODO If an old token for that action exists, remove it
+  await Token.deleteOne({ user: user._id, action });
+
   const token = await Token.create({
     user: user._id,
     token: crypto.randomBytes(16).toString('hex'),
