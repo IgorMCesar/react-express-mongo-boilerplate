@@ -11,10 +11,12 @@ const tokenSchema = new Schema(
       type: ObjectId,
       ref: 'User'
     },
-    expireAt: {
+    expires: {
       type: Date,
-      default: Date.now,
-      expires: 60000 // 1min
+      default: new Date(Date.now() + 12 * 60 * 60 * 1000),
+      index: {
+        expireAfterSeconds: 12 * 60 * 60
+      }
     }
   },
   {
