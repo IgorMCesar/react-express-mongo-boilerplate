@@ -35,17 +35,17 @@ const userSchema = new Schema(
   }
 );
 
-userSchema.pre('save', async function () {
+userSchema.pre('save', async function() {
   if (this.isModified('password')) {
     this.password = await hash(this.password, 12);
   }
 });
 
-userSchema.statics.doesntExist = async function (options) {
+userSchema.statics.doesntExist = async function(options) {
   return (await this.where(options).countDocuments()) === 0;
 };
 
-userSchema.methods.matchesPassword = function (password) {
+userSchema.methods.matchesPassword = function(password) {
   return compare(password, this.password);
 };
 

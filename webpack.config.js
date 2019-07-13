@@ -10,7 +10,8 @@ const config = {
   entry: './src/client/index.js',
   output: {
     path: path.resolve(__dirname, outputDirectory),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -42,6 +43,25 @@ const config = {
           'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
         ],
         include: /\.module\.css$/
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'less-loader'
+          }
+        ]
       }
     ]
   },
@@ -50,7 +70,8 @@ const config = {
   },
   devServer: {
     port: 3000,
-    // open: true,
+    open: true,
+    historyApiFallback: true,
     proxy: {
       '/api': 'http://localhost:8080'
     }

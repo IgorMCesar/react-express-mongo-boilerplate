@@ -1,23 +1,16 @@
 import React from 'react';
-import './app.css';
-import ReactImage from './react.png';
+import { Route, Switch } from 'react-router-dom';
 
-export default class App extends React.Component {
-  state = { username: null };
+import HomePage from './pages/Home';
+import DashboardPage from './pages/Dashboard';
 
-  componentDidMount() {
-    // fetch('/api/getUsername')
-    //   .then(res => res.json())
-    //   .then(user => this.setState({ username: user.username }));
-  }
-
-  render() {
-    const { username } = this.state;
-    return (
-      <div>
-        {username ? <h1>Hello username</h1> : <h1>Loading.. please wait!</h1>}
-        <img src={ReactImage} alt="react" />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/dashboard" component={DashboardPage} />
+    </Switch>
+  );
 }
+
+export default App;

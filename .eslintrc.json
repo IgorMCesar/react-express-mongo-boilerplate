@@ -1,11 +1,11 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "plugin:jsx-a11y/recommended"],
   "env": {
     "browser": true,
     "es6": true,
     "node": true
   },
+  "extends": ["eslint:recommended", "plugin:jsx-a11y/recommended", "plugin:prettier/recommended"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -17,16 +17,17 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "jsx-a11y"],
+  "plugins": ["react", "prettier", "jsx-a11y"],
   "rules": {
     "no-console": "off",
-    "comma-dangle": "off",
-    "react/jsx-filename-extension": "off",
-    "linebreak-style": 0,
-    "func-names": 0,
-    "class-methods-use-this": 0,
-    "no-param-reassign": 0,
-    "no-underscore-dangle": 0,
-    "no-use-before-define": 0
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", "jsx"]
+      }
+    ],
+    "prettier/prettier": "error",
+    "react/jsx-uses-react": "on",
+    "react/jsx-uses-vars": "on"
   }
 }

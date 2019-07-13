@@ -29,7 +29,9 @@ module.exports = {
       return user;
     },
     resendSignUpToken: async (root, args, context, info) => {
-      await Joi.validate(args, validators.user.sendUserToken, { abortEarly: false });
+      await Joi.validate(args, validators.user.sendUserToken, {
+        abortEarly: false
+      });
 
       const user = await User.findOne({ email: args.email });
 
@@ -64,7 +66,9 @@ module.exports = {
     },
     LogOut: async (root, args, context, info) => Auth.LogOut(context.req, context.res),
     ChangePassword: async (root, args, context, info) => {
-      await Joi.validate(args, validators.user.ChangePassword, { abortEarly: false });
+      await Joi.validate(args, validators.user.ChangePassword, {
+        abortEarly: false
+      });
 
       const newPassword = await Auth.verifyPasswordChange(
         context.req,
@@ -91,7 +95,9 @@ module.exports = {
       return !!res.nModified > 0;
     },
     forgotPassword: async (root, args, context, info) => {
-      await Joi.validate(args, validators.user.sendUserToken, { abortEarly: false });
+      await Joi.validate(args, validators.user.sendUserToken, {
+        abortEarly: false
+      });
 
       const user = await User.findOne({ email: args.email });
 

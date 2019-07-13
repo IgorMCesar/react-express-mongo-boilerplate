@@ -17,15 +17,16 @@ exports.attemptLogIn = async (email, password) => {
   return user;
 };
 
-exports.LogOut = (req, res) => new Promise((resolve, reject) => {
-  req.session.destroy((err) => {
-    if (err) reject(err);
+exports.LogOut = (req, res) =>
+  new Promise((resolve, reject) => {
+    req.session.destroy(err => {
+      if (err) reject(err);
 
-    res.clearCookie('sid');
+      res.clearCookie('sid');
 
-    resolve(true);
+      resolve(true);
+    });
   });
-});
 
 const loggedIn = req => req.session.userId;
 
@@ -66,13 +67,13 @@ exports.verifyForgotPasswordChange = async (verifiedToken, newPassword) => {
   return newPassword;
 };
 
-exports.ensureLoggedIn = (req) => {
+exports.ensureLoggedIn = req => {
   if (!loggedIn(req)) {
     throw new AuthenticationError('You must be logged in.');
   }
 };
 
-exports.ensureLoggedOut = (req) => {
+exports.ensureLoggedOut = req => {
   if (loggedIn(req)) {
     throw new AuthenticationError('You are already logged in.');
   }
