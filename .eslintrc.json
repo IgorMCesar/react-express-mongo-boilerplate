@@ -5,7 +5,7 @@
     "es6": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "plugin:jsx-a11y/recommended", "plugin:prettier/recommended"],
+  "extends": ["eslint:recommended", "plugin:jsx-a11y/recommended"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -17,7 +17,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier", "jsx-a11y"],
+  "plugins": ["react", "jsx-a11y"],
   "rules": {
     "no-console": "off",
     "react/jsx-filename-extension": [

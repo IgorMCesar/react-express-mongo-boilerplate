@@ -31,7 +31,7 @@
   "author": "Igor Marracho Carriço Cesar",
   "license": "ISC",
   "dependencies": {
-    "antd": "^3.20.1",
+    "antd": "^3.20.2",
     "apollo-boost": "^0.4.3",
     "apollo-server-express": "^2.6.3",
     "bcryptjs": "^2.4.3",

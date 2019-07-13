@@ -23,9 +23,9 @@ app.use(helmet());
 app.use(helmet.permittedCrossDomainPolicies());
 
 // Serve React Application
-if (NODE_ENV !== 'development') {
-  app.use(express.static('dist'));
-}
+// if (NODE_ENV !== 'development') {
+app.use(express.static('dist'));
+// }
 
 // Set User Session
 app.use(

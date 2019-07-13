@@ -1,9 +1,12 @@
 import React from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Icon, Input, Button, Checkbox } from 'antd';
+import Form from 'antd/lib/form';
+
+import 'antd/dist/antd.css';
 
 import _s from './LoginForm.less';
 
-class NormalLoginForm extends React.Component {
+class LoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -15,6 +18,7 @@ class NormalLoginForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
+
     return (
       <Form onSubmit={this.handleSubmit} className={_s.loginForm}>
         <Form.Item>
@@ -43,17 +47,19 @@ class NormalLoginForm extends React.Component {
             valuePropName: 'checked',
             initialValue: true
           })(<Checkbox>Remember me</Checkbox>)}
-          <a className={_s.loginFormForgot} href="">
+          <a className={_s.loginFormForgot} href="/">
             Forgot password
           </a>
           <Button type="primary" htmlType="submit" className={_s.loginFormButton}>
             Log in
           </Button>
-          Or <a href="">register now!</a>
+          Or <a href="/">register now!</a>
         </Form.Item>
       </Form>
     );
   }
 }
 
-export default Form.create({ name: 'normal_login' })(NormalLoginForm);
+const WrapperLoginForm = Form.create()(LoginForm);
+
+export default WrapperLoginForm;
