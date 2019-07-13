@@ -26,8 +26,7 @@
         "extensions": [".js", "jsx"]
       }
     ],
-    "prettier/prettier": "error",
-    "react/jsx-uses-react": "on",
-    "react/jsx-uses-vars": "on"
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1
   }
 }

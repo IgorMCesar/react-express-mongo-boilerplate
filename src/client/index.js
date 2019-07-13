@@ -6,10 +6,7 @@ import { ApolloProvider } from 'react-apollo';
 
 import App from './App';
 
-const client = new ApolloClient({
-  uri: 'http://localhost:8080/graphql',
-  credentials: 'include'
-});
+const client = new ApolloClient({ uri: 'http://localhost:8080/graphql', credentials: 'include' });
 
 function Root() {
   return (
