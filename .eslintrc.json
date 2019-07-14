@@ -1,11 +1,20 @@
 {
   "parser": "babel-eslint",
+  "root": true,
   "env": {
     "browser": true,
     "es6": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "plugin:jsx-a11y/recommended"],
+  "extends": [
+    "standart",
+    "promise",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:node/recommended",
+    "plugin:prettier/recommended"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -17,6 +26,11 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
+  "settings": {
+    "react": {
+      "version": "latest"
+    }
+  },
   "plugins": ["react", "jsx-a11y"],
   "rules": {
     "no-console": "off",
@@ -27,6 +41,7 @@
       }
     ],
     "react/jsx-uses-react": 1,
-    "react/jsx-uses-vars": 1
+    "react/jsx-uses-vars": 1,
+    "jsx-quotes": ["error", "prefer-single"]
   }
 }

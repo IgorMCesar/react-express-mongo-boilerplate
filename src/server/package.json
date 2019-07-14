@@ -1,0 +1,38 @@
+{
+  "name": "@react-node-boilerplate/server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.js",
+  "scripts": {
+    "check-staged": "lint-staged",
+    "start": "node src/server/index.js",
+    "dev": "nodemon -r dotenv/config index.js dotenv_config_path=../../.env"
+  },
+  "keywords": [],
+  "author": "Igor Marracho Carriço Cesar",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.6.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "chalk": "^2.4.2",
+    "connect-mongo": "^3.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "graphql": "^14.4.2",
+    "graphql-tag": "^2.10.1",
+    "helmet": "^3.18.0",
+    "joi": "^14.3.1",
+    "joi-objectid": "^2.0.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "mongoose": "^5.6.0",
+    "morgan": "^1.9.1",
+    "nodemailer": "^6.2.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.0.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
+  }
+}
