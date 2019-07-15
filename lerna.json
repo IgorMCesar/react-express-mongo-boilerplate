@@ -1,4 +1,4 @@
 {
-  "packages": ["src/*", "./"],
+  "packages": ["src/*"],
   "version": "independent"
 }
