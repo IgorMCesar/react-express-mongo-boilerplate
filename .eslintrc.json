@@ -1,24 +1,6 @@
 {
-  "parser": "babel-eslint",
   "root": true,
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
-  },
-  "extends": [
-    "standart",
-    "promise",
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:node/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -26,12 +8,28 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "standard",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+    "prettier/standard"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
   "settings": {
     "react": {
       "version": "latest"
     }
   },
-  "plugins": ["react", "jsx-a11y"],
+  "plugins": ["import", "prettier", "standard", "react", "jsx-a11y"],
   "rules": {
     "no-console": "off",
     "react/jsx-filename-extension": [
@@ -42,6 +40,6 @@
     ],
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
-    "jsx-quotes": ["error", "prefer-single"]
+    "prettier/prettier": 2
   }
 }
