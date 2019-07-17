@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Input, Button, Checkbox } from 'antd';
+import { Icon, Input, Button, Checkbox, Card, Alert } from 'antd';
 import Form from 'antd/lib/form';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
@@ -38,9 +38,18 @@ class LoginForm extends React.Component {
       <Mutation mutation={LOG_IN}>
         {(logIn, { data, loading, error }) => {
           return (
-            <div>
-              {loading && <p>processing...</p>}
-              {error && <p>{error.message}</p>}
+            <Card>
+              <p style={{ fontWeight: 'bold', fontSize: '1.05rem' }}>
+                <Icon style={{ paddingRight: '5px' }} type="login" /> Login
+              </p>
+              {error && (
+                <Alert
+                  message="Please provide a valid username and password."
+                  type="error"
+                  showIcon
+                  style={{ marginBottom: '1.05rem', maxWidth: '300px' }}
+                />
+              )}
               <Form onSubmit={e => this.handleSubmit(e, logIn)} className={_s.loginForm}>
                 <Form.Item>
                   {getFieldDecorator('email', {
@@ -63,7 +72,7 @@ class LoginForm extends React.Component {
                     />
                   )}
                 </Form.Item>
-                <Form.Item>
+                <Form.Item style={{ marginBottom: 'unset' }}>
                   {getFieldDecorator('remember', {
                     valuePropName: 'checked',
                     initialValue: true
@@ -71,13 +80,18 @@ class LoginForm extends React.Component {
                   <a className={_s.loginFormForgot} href="/">
                     Forgot password
                   </a>
-                  <Button type="primary" htmlType="submit" className={_s.loginFormButton}>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    loading={loading}
+                    className={_s.loginFormButton}
+                  >
                     Log in
                   </Button>
                   Or <a href="/">register now!</a>
                 </Form.Item>
               </Form>
-            </div>
+            </Card>
           );
         }}
       </Mutation>
