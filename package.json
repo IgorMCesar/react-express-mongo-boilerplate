@@ -6,7 +6,8 @@
     "dev": "lerna exec -- npm run --parallel dev",
     "lint": "eslint '**/*.{js,jsx}'",
     "lint:fix": "npm run lint -- --fix",
-    "test": "lerna run --parallel test"
+    "test": "lerna run --parallel test",
+    "install:all": "npm install && lerna bootstrap"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
