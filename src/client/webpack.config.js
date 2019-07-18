@@ -1,13 +1,15 @@
 const webpack = require('webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+
+const htmlPlugin = new HtmlWebPackPlugin({
+  template: './public/index.html'
+});
 
 const outputDirectory = 'dist';
 
-const config = {
-  entry: './src/client/index.js',
+module.exports = {
+  entry: './index.js',
   output: {
     path: path.resolve(__dirname, outputDirectory),
     filename: 'bundle.js',
@@ -17,8 +19,19 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react'],
+            plugins: [
+              ['@babel/plugin-proposal-decorators', { legacy: true }],
+              '@babel/plugin-proposal-class-properties',
+              'graphql-tag',
+              ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }]
+            ]
+          }
+        }
       },
       {
         test: /\.css$/,
@@ -35,14 +48,6 @@ const config = {
             }
           }
         ]
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-        ],
-        include: /\.module\.css$/
       },
       {
         test: /\.less$/,
@@ -70,21 +75,11 @@ const config = {
   },
   devServer: {
     port: 3000,
-    open: true,
+    // open: true,
     historyApiFallback: true,
     proxy: {
       '/api': 'http://localhost:8080'
     }
   },
-  plugins: [
-    new LodashModuleReplacementPlugin(),
-    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
-    // new CleanWebpackPlugin([outputDirectory]),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      favicon: './public/favicon.ico'
-    })
-  ]
+  plugins: [new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/), htmlPlugin]
 };
-
-module.exports = config;

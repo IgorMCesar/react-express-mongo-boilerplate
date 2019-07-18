@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import client from './config/createApolloClient';
 
 import App from './App';
-
-const client = new ApolloClient({ uri: 'http://localhost:8080/graphql', credentials: 'include' });
 
 function Root() {
   return (
