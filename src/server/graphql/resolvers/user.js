@@ -64,6 +64,11 @@ module.exports = {
 
       return user;
     },
+    CheckIfLoggedIn: async (root, args, context, info) => {
+      const user = await User.findOne({ _id: context.req.session.userId });
+
+      return user;
+    },
     LogOut: async (root, args, context, info) => Auth.LogOut(context.req, context.res),
     ChangePassword: async (root, args, context, info) => {
       await Joi.validate(args, validators.user.ChangePassword, {

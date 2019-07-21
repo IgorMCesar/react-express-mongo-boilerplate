@@ -1,24 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
+
 import client from './config/createApolloClient';
+import store from './store/configureStore';
 
 import App from './App';
 
-function Root() {
+const Root = () => {
   return (
     <div className="App container">
       <div className="jumbotron">
-        <Router>
-          <ApolloProvider client={client}>
-            <App />
-          </ApolloProvider>
-        </Router>
+        <Provider store={store}>
+          <Router>
+            <ApolloProvider client={client}>
+              <App />
+            </ApolloProvider>
+          </Router>
+        </Provider>
       </div>
     </div>
   );
-}
+};
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(<Root />, rootElement);

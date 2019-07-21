@@ -22,6 +22,7 @@ module.exports = gql`
     resendSignUpToken(email: String!): Boolean @guest
     verifyUser(token: String!): Boolean @guest
     LogIn(email: String!, password: String!): User @guest
+    CheckIfLoggedIn: User @auth
     LogOut: Boolean @auth
     ChangePassword(password: String!, newPassword: String!): Boolean @auth
     ChangePasswordWithToken(newPassword: String!, token: String!): Boolean @guest

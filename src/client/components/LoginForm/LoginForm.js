@@ -3,6 +3,10 @@ import { Icon, Input, Button, Checkbox, Card, Alert } from 'antd';
 import Form from 'antd/lib/form';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
+import { connect } from 'react-redux';
+
+import { withRouter } from 'react-router';
+import * as actionTypes from '../../store/constants/actionTypes';
 
 import 'antd/dist/antd.css';
 
@@ -12,6 +16,10 @@ const LOG_IN = gql`
   mutation LogIn($email: String!, $password: String!) {
     LogIn(email: $email, password: $password) {
       id
+      name
+      email
+      username
+      role
     }
   }
 `;
@@ -25,7 +33,10 @@ class LoginForm extends React.Component {
         logIn({
           variables: { email: values.email, password: values.password }
         })
-          .then(res => console.log(res))
+          .then(res => {
+            this.props.onLogIn(res.data.LogIn);
+            this.props.history.push('/dashboard');
+          })
           .catch(err => console.log(err));
       }
     });
@@ -99,9 +110,27 @@ class LoginForm extends React.Component {
   }
 }
 
-const WrapperLoginForm = Form.create()(LoginForm);
+const mapStateToProps = state => {
+  return {
+    user: state.authState.user,
+    loggedIn: state.authState.loggedIn
+  };
+};
 
-export default WrapperLoginForm;
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogIn: user => dispatch({ type: actionTypes.SET_AUTH_USER, user })
+  };
+};
+
+const connectedLoginForm = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginForm);
+
+const WrapperLoginForm = Form.create()(connectedLoginForm);
+
+export default withRouter(WrapperLoginForm);
 
 // const GET_USERS = gql`
 //   query getUsers {
