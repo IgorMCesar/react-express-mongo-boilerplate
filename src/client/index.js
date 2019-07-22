@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 
 import client from './config/createApolloClient';
-import store from './store/configureStore';
+import store from './config/createStore';
 
 import App from './App';
 

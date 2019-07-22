@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon, Input, Button, Checkbox, Card, Alert } from 'antd';
 import Form from 'antd/lib/form';
 import gql from 'graphql-tag';
+import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { connect } from 'react-redux';
 
@@ -29,13 +30,12 @@ class LoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         logIn({
           variables: { email: values.email, password: values.password }
         })
           .then(res => {
             this.props.onLogIn(res.data.LogIn);
-            this.props.history.push('/dashboard');
+            this.props.history.push('/');
           })
           .catch(err => console.log(err));
       }
@@ -99,7 +99,7 @@ class LoginForm extends React.Component {
                   >
                     Log in
                   </Button>
-                  Or <a href="/">register now!</a>
+                  Or <Link to="/register">register now!</Link>
                 </Form.Item>
               </Form>
             </Card>
@@ -131,53 +131,3 @@ const connectedLoginForm = connect(
 const WrapperLoginForm = Form.create()(connectedLoginForm);
 
 export default withRouter(WrapperLoginForm);
-
-// const GET_USERS = gql`
-//   query getUsers {
-//     users {
-//       id
-//     }
-//   }
-// `;
-
-// let input;
-// let input2;
-// <Mutation mutation={LOG_IN}>
-//   {LogIn => (
-//     <div>
-//       <form
-//         onSubmit={(e) => {
-//           e.preventDefault();
-//           LogIn({ variables: { email: input.value, password: input2.value } });
-//           input.value = '';
-//         }}
-//       >
-//         <input
-//           ref={(node) => {
-//             input = node;
-//           }}
-//         />
-//         <input
-//           ref={(node) => {
-//             input2 = node;
-//           }}
-//         />
-//         <button type="submit">Add Todo</button>
-//       </form>
-//     </div>
-//   )}
-// </Mutation>
-// <Query query={GET_USERS}>
-//   {({ loading, error, data }) => {
-//     if (loading) return 'Loading...';
-//     if (error) return `Error! ${error.message}`;
-
-//     return (
-//       <div>
-//         {data.users.map(user => (
-//           <p key={user.id}>{user.id}</p>
-//         ))}
-//       </div>
-//     );
-//   }}
-// </Query>

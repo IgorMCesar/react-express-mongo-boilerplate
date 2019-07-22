@@ -13,6 +13,12 @@ const authReducer = (state = initialState, action) => {
         user: action.user,
         loggedIn: true
       };
+    case actionTypes.REMOVE_AUTH_USER:
+      return {
+        ...state,
+        user: null,
+        loggedIn: false
+      };
     case actionTypes.SET_FIRST_AUTH_STATE:
       return {
         ...state,

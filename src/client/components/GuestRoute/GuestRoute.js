@@ -2,16 +2,15 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const PrivateRoute = ({ component: Component, loggedIn, user, ...rest }) => {
-  console.log(loggedIn);
+const GuestRoute = ({ component: Component, loggedIn, user, ...rest }) => {
   return (
     <Route
       {...rest}
       render={props =>
         loggedIn ? (
-          <Component {...props} />
+          <Redirect to={{ pathname: '/', state: { from: props.location } }} />
         ) : (
-          <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+          <Component {...props} />
         )
       }
     />
@@ -25,6 +24,6 @@ const mapStateToProps = state => {
   };
 };
 
-const ConnectedPrivateRoute = connect(mapStateToProps)(PrivateRoute);
+const ConnectedGuestRoute = connect(mapStateToProps)(GuestRoute);
 
-export default ConnectedPrivateRoute;
+export default ConnectedGuestRoute;

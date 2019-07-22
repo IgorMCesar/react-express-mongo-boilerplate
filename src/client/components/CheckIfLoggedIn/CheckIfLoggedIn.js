@@ -8,8 +8,6 @@ import * as actionTypes from '../../store/constants/actionTypes';
 
 import 'antd/dist/antd.css';
 
-// import _s from './LoginForm.less';
-
 const VERIFY_LOGGED_IN = gql`
   mutation CheckIfLoggedIn {
     CheckIfLoggedIn {
