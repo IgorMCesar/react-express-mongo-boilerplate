@@ -38,7 +38,7 @@ class LoggedLayout extends React.Component {
     const { children, location } = this.props;
     return (
       <Layout className="layout" style={{ minHeight: '100vh' }}>
-        <Header>
+        <Header style={{ height: 'unset' }}>
           <Mutation mutation={LOG_OUT}>
             {(LogOut, { data, loading, error }) => {
               return (
@@ -47,7 +47,7 @@ class LoggedLayout extends React.Component {
                   mode="horizontal"
                   defaultSelectedKeys={['/']}
                   selectedKeys={[location.pathname]}
-                  style={{ lineHeight: '64px' }}
+                  style={{ lineHeight: '65px' }}
                   onClick={e => this.handleClick(e, LogOut)}
                 >
                   <Menu.Item key="/">

@@ -9,13 +9,13 @@ const { Header, Footer, Content } = Layout;
 
 const GuestLayout = props => (
   <Layout className="layout" style={{ minHeight: '100vh' }}>
-    <Header>
+    <Header style={{ height: 'unset' }}>
       <Menu
         theme="dark"
         mode="horizontal"
         defaultSelectedKeys={['/']}
         selectedKeys={[props.location.pathname]}
-        style={{ lineHeight: '64px' }}
+        style={{ lineHeight: '65px' }}
       >
         <Menu.Item key="/login" className={_s.login}>
           <Link to="/login" style={{ fontWeight: '500' }}>
