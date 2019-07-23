@@ -13,3 +13,22 @@
     }
   }
 }
+
+.login {
+  float: right;
+  :global {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .loginIcon {
+    transition: transform 200ms ease 0s;
+    -ms-transform: translate(-0px, 0px) scale(1);
+    transform: translate(-0px, 0px) scale(1);
+  }
+  &:hover {
+    .loginIcon {
+      transition: transform 200ms ease 0s;
+      -ms-transform: translate(2px, 0px) scale(1.4);
+      transform: translate(2px, 0px) scale(1.4);
+    }
+  }
+}

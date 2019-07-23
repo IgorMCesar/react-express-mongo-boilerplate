@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
           return (
             <Card>
               <p style={{ fontWeight: 'bold', fontSize: '1.05rem' }}>
-                <Icon style={{ paddingRight: '5px' }} type="login" /> Login
+                <Icon style={{ paddingRight: '5px' }} type="login" /> Log In
               </p>
               {error && (
                 <Alert

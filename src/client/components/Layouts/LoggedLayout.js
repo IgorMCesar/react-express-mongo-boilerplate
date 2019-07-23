@@ -35,7 +35,7 @@ class LoggedLayout extends React.Component {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, location } = this.props;
     return (
       <Layout className="layout" style={{ minHeight: '100vh' }}>
         <Header>
@@ -45,11 +45,12 @@ class LoggedLayout extends React.Component {
                 <Menu
                   theme="dark"
                   mode="horizontal"
-                  defaultSelectedKeys={['2']}
+                  defaultSelectedKeys={['/']}
+                  selectedKeys={[location.pathname]}
                   style={{ lineHeight: '64px' }}
                   onClick={e => this.handleClick(e, LogOut)}
                 >
-                  <Menu.Item key="1">
+                  <Menu.Item key="/">
                     <Link to="/">Dashboard</Link>
                   </Menu.Item>
                   <SubMenu

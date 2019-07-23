@@ -1,5 +1,7 @@
 import React from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 import _s from './Layouts.less';
 
@@ -11,13 +13,21 @@ const GuestLayout = props => (
       <Menu
         theme="dark"
         mode="horizontal"
-        defaultSelectedKeys={['2']}
+        defaultSelectedKeys={['/']}
+        selectedKeys={[props.location.pathname]}
         style={{ lineHeight: '64px' }}
-      />
+      >
+        <Menu.Item key="/login" className={_s.login}>
+          <Link to="/login" style={{ fontWeight: '500' }}>
+            Log In
+            <Icon type="login" style={{ marginLeft: '10px' }} className={_s.loginIcon} />
+          </Link>
+        </Menu.Item>
+      </Menu>
     </Header>
     <Content className={_s.Content}>{props.children}</Content>
     <Footer style={{ textAlign: 'center' }}>React Node Boilerplate by IgorMCesar</Footer>
   </Layout>
 );
 
-export default GuestLayout;
+export default withRouter(GuestLayout);
