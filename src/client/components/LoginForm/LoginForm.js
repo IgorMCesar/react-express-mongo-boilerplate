@@ -1,114 +1,86 @@
 import React from 'react';
-import { Icon, Input, Button, Checkbox, Card, Alert } from 'antd';
-import Form from 'antd/lib/form';
-import gql from 'graphql-tag';
-import { Link } from 'react-router-dom';
-import { Mutation } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { withFormik } from 'formik';
 
-import { withRouter } from 'react-router';
+import { Form, Icon, Input, Button, Checkbox, Card, Alert } from 'antd';
+
+import validators from '../../validators/validators';
+import { mutations } from '../../graphql/graphql';
 import * as actionTypes from '../../store/constants/actionTypes';
-
-import 'antd/dist/antd.css';
 
 import _s from './LoginForm.less';
 
-const LOG_IN = gql`
-  mutation LogIn($email: String!, $password: String!) {
-    LogIn(email: $email, password: $password) {
-      id
-      name
-      email
-      username
-      role
+const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus }) => {
+  const { email, password } = values;
+
+  props.LogIn({ variables: { email, password } }).then(
+    res => {
+      props.onLogIn(res.data.LogIn);
+    },
+    e => {
+      setSubmitting(false);
+      setErrors({ auth: 'Incorrect email or password.' });
     }
-  }
-`;
-
-class LoginForm extends React.Component {
-  handleSubmit = (e, logIn) => {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        logIn({
-          variables: { email: values.email, password: values.password }
-        })
-          .then(res => {
-            this.props.onLogIn(res.data.LogIn);
-            this.props.history.push('/');
-          })
-          .catch(err => console.log(err));
-      }
-    });
-  };
-
-  render() {
-    const { getFieldDecorator } = this.props.form;
-
-    return (
-      <Mutation mutation={LOG_IN}>
-        {(logIn, { data, loading, error }) => {
-          return (
-            <Card>
-              <p style={{ fontWeight: 'bold', fontSize: '1.05rem' }}>
-                <Icon style={{ paddingRight: '5px' }} type="login" /> Log In
-              </p>
-              {error && (
-                <Alert
-                  message="Please provide a valid username and password."
-                  type="error"
-                  showIcon
-                  style={{ marginBottom: '1.05rem', maxWidth: '300px' }}
-                />
-              )}
-              <Form onSubmit={e => this.handleSubmit(e, logIn)} className={_s.loginForm}>
-                <Form.Item>
-                  {getFieldDecorator('email', {
-                    rules: [{ required: true, message: 'Please input your email!' }]
-                  })(
-                    <Input
-                      prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                      placeholder="Email"
-                    />
-                  )}
-                </Form.Item>
-                <Form.Item>
-                  {getFieldDecorator('password', {
-                    rules: [{ required: true, message: 'Please input your Password!' }]
-                  })(
-                    <Input
-                      prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                      type="password"
-                      placeholder="Password"
-                    />
-                  )}
-                </Form.Item>
-                <Form.Item style={{ marginBottom: 'unset' }}>
-                  {getFieldDecorator('remember', {
-                    valuePropName: 'checked',
-                    initialValue: true
-                  })(<Checkbox>Remember me</Checkbox>)}
-                  <a className={_s.loginFormForgot} href="/">
-                    Forgot password
-                  </a>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    loading={loading}
-                    className={_s.loginFormButton}
-                  >
-                    Log in
-                  </Button>
-                  Or <Link to="/register">register now!</Link>
-                </Form.Item>
-              </Form>
-            </Card>
-          );
-        }}
-      </Mutation>
-    );
-  }
-}
+  );
+};
+const LoginForm = props => {
+  const { values, handleChange, handleBlur, handleSubmit, errors, isSubmitting } = props;
+  return (
+    <Card>
+      <p style={{ fontWeight: 'bold', fontSize: '1.05rem' }}>
+        <Icon style={{ paddingRight: '5px' }} type="login" /> Log In
+      </p>
+      {Object.keys(errors).length > 0 && (
+        <Alert
+          message={errors.email || errors.password || errors.auth}
+          type="error"
+          showIcon
+          style={{ marginBottom: '1.05rem', maxWidth: '300px' }}
+        />
+      )}
+      <form className={_s.loginForm} onSubmit={handleSubmit}>
+        <Form.Item>
+          <Input
+            name="email"
+            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            placeholder="Email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Form.Item>
+        <Form.Item>
+          <Input
+            name="password"
+            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            type="password"
+            placeholder="Password"
+            value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Form.Item>
+        <Form.Item style={{ marginBottom: 'unset' }}>
+          <Checkbox>Remember me</Checkbox>
+          <a className={_s.loginFormForgot} href="/">
+            Forgot password
+          </a>
+          <Button
+            type="primary"
+            htmlType="submit"
+            loading={isSubmitting}
+            className={_s.loginFormButton}
+          >
+            Log in
+          </Button>
+          Or <Link to="/register">register now!</Link>
+        </Form.Item>
+      </form>
+    </Card>
+  );
+};
 
 const mapStateToProps = state => {
   return {
@@ -123,11 +95,17 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const connectedLoginForm = connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  graphql(mutations.LOG_IN, { name: 'LogIn' }),
+  withFormik({
+    validationSchema: validators.user.loginSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
+    handleSubmit,
+    mapPropsToValues: () => ({ email: '', password: '' })
+  })
 )(LoginForm);
-
-const WrapperLoginForm = Form.create()(connectedLoginForm);
-
-export default withRouter(WrapperLoginForm);

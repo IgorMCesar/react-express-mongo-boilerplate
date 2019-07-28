@@ -14,6 +14,7 @@
     "antd": "^3.20.2",
     "apollo-boost": "^0.4.3",
     "body-parser": "^1.19.0",
+    "formik": "^1.5.8",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
     "react": "^16.8.6",
@@ -22,7 +23,8 @@
     "react-redux": "^7.1.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "redux": "^4.0.4"
+    "redux": "^4.0.4",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
