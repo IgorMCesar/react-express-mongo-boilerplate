@@ -6,8 +6,8 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
 <br>
 
 <div align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Antu_mongodb.svg/512px-Antu_mongodb.svg.png" height="75">
-  <img src="https://i.gyazo.com/36f98cef5dba5bb3a151aeca21e6ac53.png" height="75">
+  <img src="https://cdn.iconscout.com/icon/free/png-256/mongodb-5-1175140.png" height="75">
+  <img src="https://cdn.iconscout.com/icon/free/png-256/express-8-1175029.png" height="75">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/512px-React.svg.png" height="75">
   <img src="https://media.licdn.com/dms/image/C4E0BAQE19TrEXW022w/company-logo_200_200/0?e=2159024400&v=beta&t=KSA1haVf2zqXDG5scvlmrXltTNA3MkkLLQpolQrTBTU" height="75">
   <img src="https://nodejs.org/static/images/logo-hexagon-card.png" height="75">
