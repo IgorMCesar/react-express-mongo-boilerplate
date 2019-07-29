@@ -2,6 +2,8 @@ const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 
 const email = Joi.string()
+  .min(3)
+  .max(255)
   .email()
   .required()
   .label('Email');
@@ -14,13 +16,12 @@ const username = Joi.string()
   .label('Username');
 
 const name = Joi.string()
-  .max(254)
+  .min(4)
+  .max(255)
   .required()
   .label('Name');
 
 const password = Joi.string()
-  .required()
-  .label('Password')
   .min(8)
   .max(50)
   .regex(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)
@@ -32,7 +33,9 @@ const password = Joi.string()
         }
       }
     }
-  });
+  })
+  .required()
+  .label('Password');
 
 const token = Joi.string()
   .token()

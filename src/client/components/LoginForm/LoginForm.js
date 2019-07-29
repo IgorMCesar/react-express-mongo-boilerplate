@@ -21,6 +21,12 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
     },
     e => {
       setSubmitting(false);
+      e.graphQLErrors.map(x => {
+        console.log(x.message);
+        // TODO NOT VERIFIED MESSAGE
+        // if (x.message.includes('email')) errors.email = 'Email has already been taken.';
+        // if (x.message.includes('username')) errors.username = 'Username has already been taken.';
+      });
       setErrors({ auth: 'Incorrect email or password.' });
     }
   );
