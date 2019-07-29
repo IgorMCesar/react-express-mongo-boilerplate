@@ -4,7 +4,7 @@
 
 
 #### :construction: Work in progress!!! :construction:
-MER(A)N is a MERN stack with Apollo GrapgQL.
+MER(A)N is a MERN stack with Apollo GraphQL.
 
 ## Features
 
