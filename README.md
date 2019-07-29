@@ -1,9 +1,20 @@
 # MER(A)N - FullStack Boilerplate
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Antu_mongodb.svg/512px-Antu_mongodb.svg.png" height="50"><img src="https://i.cloudup.com/zfY6lL7eFa-3000x3000.png" height="50"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/512px-React.svg.png" height="50"><img src="https://media.licdn.com/dms/image/C4E0BAQE19TrEXW022w/company-logo_200_200/0?e=2159024400&v=beta&t=KSA1haVf2zqXDG5scvlmrXltTNA3MkkLLQpolQrTBTU" height="50"><img src="https://nodejs.org/static/images/logo-hexagon-card.png" height="50">
-
 #### :construction: Work in progress!!! :construction:
 MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo GraphQL.
+
+<br>
+
+<div align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Antu_mongodb.svg/512px-Antu_mongodb.svg.png" height="75">
+  <img src="https://i.cloudup.com/zfY6lL7eFa-3000x3000.png" height="75">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/512px-React.svg.png" height="75">
+  <img src="https://media.licdn.com/dms/image/C4E0BAQE19TrEXW022w/company-logo_200_200/0?e=2159024400&v=beta&t=KSA1haVf2zqXDG5scvlmrXltTNA3MkkLLQpolQrTBTU" height="75">
+  <img src="https://nodejs.org/static/images/logo-hexagon-card.png" height="75">
+</div>
+
+<hr />
+<br />
 
 ## Features
 **Server**
