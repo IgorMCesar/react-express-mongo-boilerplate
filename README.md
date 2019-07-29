@@ -1,33 +1,42 @@
-# React Node Boilerplate
+# MER(A)N - FullStack Boilerplate
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Antu_mongodb.svg/512px-Antu_mongodb.svg.png" height="50"><img src="https://i.cloudup.com/zfY6lL7eFa-3000x3000.png" height="50"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/512px-React.svg.png" height="50"><img src="https://media.licdn.com/dms/image/C4E0BAQE19TrEXW022w/company-logo_200_200/0?e=2159024400&v=beta&t=KSA1haVf2zqXDG5scvlmrXltTNA3MkkLLQpolQrTBTU" height="50"><img src="https://nodejs.org/static/images/logo-hexagon-card.png" height="50">
+
 
 #### :construction: Work in progress!!! :construction:
-React Node Boilerplate is a MERN stack with GraphQL.
+MER(A)N is a MERN stack with Apollo GrapgQL.
 
-## React Node Boilerplate includes:
+## Features
 
+**Server**
+* [x] **[Node.JS](https://nodejs.org)** v10.x.x
+* [x] **[Express](https://github.com/expressjs/express)**
+* [x] **[GraphQL](http://graphql.org/)** with [Apollo Server Express](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-express)
+* [x] **[MongoDB](https://www.mongodb.com/)** with [Mongoose](https://github.com/Automattic/mongoose)
+* [x] [Express Session](https://github.com/expressjs/session)
+* [x] [Body Parser](https://github.com/expressjs/body-parser)
+* [x] [NodeMailer](https://github.com/nodemailer/nodemailer)
+* [x] [Helmet](https://github.com/helmetjs/helmet)
+* [x] [bcrypt.js](https://github.com/dcodeIO/bcrypt.js)
+* [x] [Morgan](https://github.com/expressjs/morgan)
+* [x] [Joi](https://github.com/hapijs/joi)
+* [x] [Chalk](https://github.com/chalk/chalk)
+
+
+**Client**
+#### TODO
 * React
 * Redux
 * Redux Thunk
+* Router
 * Webpack
 * Babel
-* Chalk
-* Morgan
-* Body-parser
-* GraphQL
-* Helmet
-* Joi
-* Mongoose
-* Express-session
-* Lodash
-* Bcryptjs
-
-## React Node Boilerplate will include:
 * Ant Design
-* i18next
 * Jest
+* i18n
 * Normalizr
-* Router
-* Node-mailer
+* GraphQL
+* Yup
 
 ## Getting Started
 
