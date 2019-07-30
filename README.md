@@ -1,4 +1,4 @@
-<img src="https://lh3.googleusercontent.com/-t4R7Ro5PqTmv2cixUsii1-GVhOwprwW5FJ594SR3kDduCyk8JLERLeidF5Jvb00_-OELbCKzJ_3-ETZirs-=w2560-h1248-rw" alt="react boilerplate banner" align="center" />
+<img src="https://user-images.githubusercontent.com/5064518/62132713-f3c25480-b2b3-11e9-9bb2-8447432ac980.png" alt="react boilerplate banner" align="center" />
 
 <br />
 
