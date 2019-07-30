@@ -1,5 +1,7 @@
 <img src="https://lh3.googleusercontent.com/-t4R7Ro5PqTmv2cixUsii1-GVhOwprwW5FJ594SR3kDduCyk8JLERLeidF5Jvb00_-OELbCKzJ_3-ETZirs-=w2560-h1248-rw" alt="react boilerplate banner" align="center" />
 
+<br />
+
 MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo GraphQL.
 
 <br>
