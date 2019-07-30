@@ -17,6 +17,9 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
 <br />
 
 <div align="center">
+  <a href="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
+    <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
+  </a>
   <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate">
     <img alt="David" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=root%20dev%20dependencies">
   </a>
