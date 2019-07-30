@@ -14,6 +14,26 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
   <img src="https://nodejs.org/static/images/logo-hexagon-card.png" height="75">
 </div>
 
+<br />
+
+<div align="center">
+  <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate">
+    <img alt="David" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=root%20dev%20dependencies">
+  </a>
+  <a href="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/client">
+    <img alt="David Client Dependencies" src="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/client">
+  </a>
+  <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/client">
+    <img alt="David Client Dev Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=client%20dev%20dependencies&path=src/client">
+  </a>
+  <a href="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/server">
+    <img alt="David Server Dependencies" src="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=server%20dependencies&path=src/server">
+  </a>
+  <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/server">
+    <img alt="David Server Dev Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=server%20dev%20dependencies&path=src/server">
+  </a>
+</div>
+
 <hr />
 <br />
 
