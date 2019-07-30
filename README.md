@@ -25,7 +25,7 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
     <img alt="Snyk Root Vulnerabilities" src="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?label=root%20vulnerabilities">
   </a>
   <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=root%20dependencies">
-    <img alt="David Root Dependencies" src="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=root%20dependencies">
+    <img alt="David Root Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=root%20dependencies">
   
   <a href="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/client/package.json&label=client%20vulnerabilities">
     <img alt="Snyk Client Vulnerabilities" src="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/client/package.json&label=client%20vulnerabilities">
