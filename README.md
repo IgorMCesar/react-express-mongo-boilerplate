@@ -46,7 +46,7 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
   <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/server">
     <img alt="David Server Dev Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=server%20dev%20dependencies&path=src/server">
   </a>
-</div>Vulnerabilities 
+</div>
 
 <hr />
 <br />
@@ -54,7 +54,6 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
 ## Features
 **Server**
 
-[![Known Vulnerabilities](https://snyk.io/test/github/IgorMCesar/react-node-boilerplate/badge.svg?targetFile=src/server/package.json)](https://snyk.io/test/github/IgorMCesar/react-node-boilerplate)
 * [x] **[Node.JS](https://nodejs.org)** v10.x.x
 * [x] **[Express](https://github.com/expressjs/express)**
 * [x] **[GraphQL](http://graphql.org/)** with [Apollo Server Express](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-express)
@@ -71,7 +70,6 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
 
 **Client**
 
-[![Known Vulnerabilities](https://snyk.io/test/github/IgorMCesar/react-node-boilerplate/badge.svg?targetFile=src/client/package.json)](https://snyk.io/test/github/IgorMCesar/react-node-boilerplate)
 #### TODO
 * React
 * Redux
