@@ -1,10 +1,10 @@
 <img src="https://user-images.githubusercontent.com/5064518/62132713-f3c25480-b2b3-11e9-9bb2-8447432ac980.png" alt="react boilerplate banner" align="center" />
 
-<br />
+
 
 MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo GraphQL.
 
-<br>
+
 
 <div align="center">
   <img src="https://cdn.iconscout.com/icon/free/png-256/mongodb-5-1175140.png" height="75">
@@ -14,19 +14,18 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
   <img src="https://nodejs.org/static/images/logo-hexagon-card.png" height="75">
 </div>
 
-<br />
+
 
 <div align="center">
   <a href="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
     <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
   </a>
-  
-  <a href="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplatelabel=root%20vulnerabilities">
+    <a href="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplatelabel=root%20vulnerabilities">
     <img alt="Snyk Root Vulnerabilities" src="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?label=root%20vulnerabilities">
   </a>
   <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=root%20dependencies">
     <img alt="David Root Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=root%20dependencies">
-  
+  </a>
   <a href="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/client/package.json&label=client%20vulnerabilities">
     <img alt="Snyk Client Vulnerabilities" src="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/client/package.json&label=client%20vulnerabilities">
   </a>
@@ -36,7 +35,6 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
   <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/client">
     <img alt="David Client Dev Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=client%20dev%20dependencies&path=src/client">
   </a>
-  
   <a href="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/server/package.json&label=client%20vulnerabilities">
     <img alt="Snyk Server Vulnerabilities" src="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/server/package.json&label=server%20vulnerabilities">
   </a>
@@ -49,40 +47,42 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
 </div>
 
 <hr />
-<br />
+
+
 
 ## Features
+
 **Server**
 
-* [x] **[Node.JS](https://nodejs.org)** v10.x.x
-* [x] **[Express](https://github.com/expressjs/express)**
-* [x] **[GraphQL](http://graphql.org/)** with [Apollo Server Express](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-express)
-* [x] **[MongoDB](https://www.mongodb.com/)** with [Mongoose](https://github.com/Automattic/mongoose)
-* [x] [Express Session](https://github.com/expressjs/session)
-* [x] [Body Parser](https://github.com/expressjs/body-parser)
-* [x] [NodeMailer](https://github.com/nodemailer/nodemailer)
-* [x] [Helmet](https://github.com/helmetjs/helmet)
-* [x] [bcrypt.js](https://github.com/dcodeIO/bcrypt.js)
-* [x] [Morgan](https://github.com/expressjs/morgan)
-* [x] [Joi](https://github.com/hapijs/joi)
-* [x] [Chalk](https://github.com/chalk/chalk)
-
+- [x] **[Node.JS](https://nodejs.org)** v10.x.x
+- [x] **[Express](https://github.com/expressjs/express)**
+- [x] **[GraphQL](http://graphql.org/)** with [Apollo Server Express](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-express)
+- [x] **[MongoDB](https://www.mongodb.com/)** with [Mongoose](https://github.com/Automattic/mongoose)
+- [x] [Express Session](https://github.com/expressjs/session)
+- [x] [Body Parser](https://github.com/expressjs/body-parser)
+- [x] [NodeMailer](https://github.com/nodemailer/nodemailer)
+- [x] [Helmet](https://github.com/helmetjs/helmet)
+- [x] [bcrypt.js](https://github.com/dcodeIO/bcrypt.js)
+- [x] [Morgan](https://github.com/expressjs/morgan)
+- [x] [Joi](https://github.com/hapijs/joi)
+- [x] [Chalk](https://github.com/chalk/chalk)
 
 **Client**
 
 #### TODO
-* React
-* Redux
-* Redux Thunk
-* Router
-* Webpack
-* Babel
-* Ant Design
-* Jest
-* i18n
-* Normalizr
-* GraphQL
-* Yup
+
+- React
+- Redux
+- Redux Thunk
+- Router
+- Webpack
+- Babel
+- Ant Design
+- Jest
+- i18n
+- Normalizr
+- GraphQL
+- Yup
 
 ## Getting Started
 
@@ -105,9 +105,11 @@ Now lets create our environment variables. open `.env.example` and use it to cre
 I used https://cloud.mongodb.com/ to ser up my MongoDB, but you can user whatever you like.
 
 ## Running React Node Boilerplate
+
 ### Development
 
 To run React Node Boilerplate using development configs run:
+
 ```
 npm run dev
 ```
@@ -115,6 +117,7 @@ npm run dev
 ### Production
 
 To run the React Node Boilerplate using production configs run:
+
 ```
 npm run start
 ```
@@ -126,12 +129,13 @@ Make sure you didn't forget any sensitive information in your code, remeber to a
 To deploy the React Node Boilerplate you need to set all your environment variables on the PaaS platform of your choice.
 
 Set the starting script to:
+
 ```
 npm run start
 ```
+
 (If you are deploying to Heroku, there is no need for this step, heroku already uses start as default)
 
 ## Authors
 
-* **Igor Cesar** - *Initial work*
-
+- **Igor Cesar** - *Initial work*
