@@ -1,10 +1,10 @@
 <img src="https://user-images.githubusercontent.com/5064518/62132713-f3c25480-b2b3-11e9-9bb2-8447432ac980.png" alt="react boilerplate banner" align="center" />
 
-
+<br/>
 
 MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo GraphQL.
 
-
+<br/>
 
 <div align="center">
   <img src="https://cdn.iconscout.com/icon/free/png-256/mongodb-5-1175140.png" height="75">
@@ -14,7 +14,7 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
   <img src="https://nodejs.org/static/images/logo-hexagon-card.png" height="75">
 </div>
 
-
+<br/>
 
 <div align="center">
   <a href="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
@@ -48,7 +48,7 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
 
 <hr />
 
-
+<br/>
 
 ## Features
 
