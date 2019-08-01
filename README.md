@@ -2,7 +2,12 @@
 
 <br/>
 
-MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo GraphQL.
+<div align="center">
+    <b>
+        Start your next FullStack project in seconds!
+    </b>
+    <p>MER(A)N is a FullStack monorepo webapp boilerplate based on the MERN stack with Apollo GraphQL.</p>
+</div>
 
 <br/>
 
@@ -17,32 +22,47 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
 <br/>
 
 <div align="center">
-  <a href="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
+    <a href="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
     <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
   </a>
-    <a href="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplatelabel=root%20vulnerabilities">
-    <img alt="Snyk Root Vulnerabilities" src="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?label=root%20vulnerabilities">
+  <a href="https://img.shields.io/github/license/IgorMCesar/react-express-mongo-boilerplate?color=blue">
+  	<img alt="GitHub License" src="https://img.shields.io/github/license/IgorMCesar/react-express-mongo-boilerplate?color=blue">
   </a>
-  <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=root%20dependencies">
-    <img alt="David Root Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=root%20dependencies">
+  <a href="https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github">
+    <img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen">
+  </a>
+</div>
+
+<br/>
+
+<div align="center">
+  <a href="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/client">
+    <img alt="David Client Dependencies" src="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/client">
+  </a>
+  <a href="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=server%20dependencies&path=src/server">
+    <img alt="David Server Dependencies" src="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=server%20dependencies&path=src/server">
+  </a>
+</div>
+<div align="center">
+  <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=core%20devDependencies">
+    <img alt="David Core Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=core%20devDependencies">
+  </a>
+  <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=client%20devDependencies&path=src/client">
+    <img alt="David Client Dev Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=client%20devDependencies&path=src/client">
+  </a>
+  <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=server%20devDependencies&path=src/server">
+    <img alt="David Server Dev Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=server%20devDependencies&path=src/server">
+  </a>
+</div>
+<div align="center">
+    <a href="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplatelabel=core%20vulnerabilities">
+    <img alt="Snyk Core Vulnerabilities" src="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?label=core%20vulnerabilities">
   </a>
   <a href="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/client/package.json&label=client%20vulnerabilities">
     <img alt="Snyk Client Vulnerabilities" src="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/client/package.json&label=client%20vulnerabilities">
   </a>
-  <a href="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/client">
-    <img alt="David Client Dependencies" src="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/client">
-  </a>
-  <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/client">
-    <img alt="David Client Dev Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=client%20dev%20dependencies&path=src/client">
-  </a>
-  <a href="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/server/package.json&label=client%20vulnerabilities">
+  <a href="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/server/package.json&label=server%20vulnerabilities">
     <img alt="Snyk Server Vulnerabilities" src="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/server/package.json&label=server%20vulnerabilities">
-  </a>
-  <a href="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/server">
-    <img alt="David Server Dependencies" src="https://img.shields.io/david/IgorMCesar/react-express-mongo-boilerplate?label=server%20dependencies&path=src/server">
-  </a>
-  <a href="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=client%20dependencies&path=src/server">
-    <img alt="David Server Dev Dependencies" src="https://img.shields.io/david/dev/IgorMCesar/react-express-mongo-boilerplate?label=server%20dev%20dependencies&path=src/server">
   </a>
 </div>
 
@@ -50,11 +70,15 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
 
 <br/>
 
-## Features
+## Project Stack
+
+**Core**
+
+- [x] **[Lerna](https://github.com/lerna/lerna)** 
 
 **Server**
 
-- [x] **[Node.JS](https://nodejs.org)** v10.x.x
+- [x] **[Node.js](https://nodejs.org)** 
 - [x] **[Express](https://github.com/expressjs/express)**
 - [x] **[GraphQL](http://graphql.org/)** with [Apollo Server Express](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-express)
 - [x] **[MongoDB](https://www.mongodb.com/)** with [Mongoose](https://github.com/Automattic/mongoose)
@@ -68,8 +92,6 @@ MER(A)N is a FullStack webapp boilerplate based on a MERN stack with Apollo Grap
 - [x] [Chalk](https://github.com/chalk/chalk)
 
 **Client**
-
-#### TODO
 
 - React
 - Redux
