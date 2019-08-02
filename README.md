@@ -69,9 +69,9 @@
   </a>
 </div>
 
-<br>
-
 <hr />
+
+<br>
 
 ## Tech Stack
 
