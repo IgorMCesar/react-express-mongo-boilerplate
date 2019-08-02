@@ -123,9 +123,7 @@
 - Command Line Tools
 
 **Note:** If you are new to Node, Express, Mongo, React or GraphQL you may find
-[Build a Complete App with GraphQL, Node.js, MongoDB and React.js](https://www.youtube.com/watch?v=7giZGFDGnkc&list=PL55RiY5tL51rG1x02Yyj93iypUuHYXcB_&index=1)
-
-from [@maxedapps](https://twitter.com/maxedapps) helpful for learning everything you need to know.
+[Build a Complete App with GraphQL, Node.js, MongoDB and React.js](https://www.youtube.com/watch?v=7giZGFDGnkc&list=PL55RiY5tL51rG1x02Yyj93iypUuHYXcB_&index=1) from [@maxedapps](https://twitter.com/maxedapps) helpful for learning everything you need to know.
 
 ### Installing
 
