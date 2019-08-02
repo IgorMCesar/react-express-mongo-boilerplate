@@ -74,11 +74,9 @@
 
 <hr />
 
-<br>
-
 ## Tech Stack
 
-**Core Dev **
+**Core Dev**
 
 - **[Lerna](https://github.com/lerna/lerna)** —  JavaScript monorepo project manager
 
