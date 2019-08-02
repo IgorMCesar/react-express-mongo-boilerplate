@@ -129,7 +129,7 @@
 
 The easiest way is to clone the repository and run `npm run install:all`:
 
-```
+```bash
 # Get the latest version
 git clone https://github.com/IgorMCesar/react-node-boilerplate.git myproject
 
@@ -150,7 +150,7 @@ Now lets set the environment variables. Open `.env.example` and use it to create
 
 To run MERN(A) using development configs run:
 
-```
+```bash
 npm run dev
 ```
 
