@@ -119,7 +119,7 @@
 
 - [MongoDB](https://www.mongodb.com/download-center/community) or [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 - [Node.js 10.0+](http://nodejs.org)
-- Code Editor —  [Visual Studio Code](https://code.visualstudio.com/) (preferred) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) plug-ins.
+- Code Editor —  [Visual Studio Code](https://code.visualstudio.com/) (preferred) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) plug-ins.
 - Command Line Tools
 
 **Note:** If you are new to Node, Express, Mongo, React or GraphQL you may find
