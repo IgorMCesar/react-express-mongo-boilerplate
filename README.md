@@ -7,6 +7,9 @@
         Start your next FullStack project in seconds!
     </b>
     <p>MER(A)N is a FullStack opinionated monorepo webapp boilerplate based on the MERN stack with Apollo GraphQL.</p>
+    <sub>
+        Made with ❤️ by <a ref="https://github.com/IgorMCesar">IgorMCesar</a>.
+    </sub>
 </div>
 
 <br>
@@ -64,12 +67,6 @@
   <a href="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/server/package.json&label=server%20vulnerabilities">
     <img alt="Snyk Server Vulnerabilities" src="https://img.shields.io/snyk/vulnerabilities/github/IgorMCesar/react-express-mongo-boilerplate?&path=src/server/package.json&label=server%20vulnerabilities">
   </a>
-</div>
-
-<div align="center">
-    <sub>
-        Made with ❤️ by <a ref="https://github.com/IgorMCesar">IgorMCesar</a>.
-    </sub>
 </div>
 
 <br>
