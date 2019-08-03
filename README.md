@@ -107,6 +107,7 @@
 - [x] **[Webpack](https://github.com/webpack/webpack)**
 - [x] **[Babel](https://babeljs.io/)**
 - [x] **[GraphQL](http://graphql.org/)** with [Apollo Client (Boost)](https://github.com/apollographql/apollo-client/tree/master/packages/apollo-boost)
+- [x] [Less](http://lesscss.org/)
 - [x] [Ant Design](https://ant.design/)
 - [x] [Formik](https://jaredpalmer.com/formik/)
 - [x] [Yup](https://github.com/jquense/yup)
