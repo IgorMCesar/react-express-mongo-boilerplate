@@ -25,11 +25,14 @@
 <br>
 
 <div align="center">
-    <a href="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
+  <a href="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
     <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
   </a>
   <a href="https://img.shields.io/github/license/IgorMCesar/react-express-mongo-boilerplate?color=blue">
   	<img alt="GitHub License" src="https://img.shields.io/github/license/IgorMCesar/react-express-mongo-boilerplate?color=blue">
+  </a>
+  <a href="https://img.shields.io/github/issues-raw/IgorMCesar/react-express-mongo-boilerplate">
+    <img alt="GitHub Open Issues" src="https://img.shields.io/github/issues-raw/IgorMCesar/react-express-mongo-boilerplate">
   </a>
   <a href="https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github">
     <img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen">
@@ -108,6 +111,7 @@
 - [x] **[Babel](https://babeljs.io/)**
 - [x] **[GraphQL](http://graphql.org/)** with [Apollo Client (Boost)](https://github.com/apollographql/apollo-client/tree/master/packages/apollo-boost)
 - [x] [Ant Design](https://ant.design/)
+- [x] [Formik](https://jaredpalmer.com/formik/)
 - [x] [Yup](https://github.com/jquense/yup)
 - [ ] Jest
 - [ ] i18n
