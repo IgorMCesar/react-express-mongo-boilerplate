@@ -22,7 +22,7 @@
   <img src="https://nodejs.org/static/images/logo-hexagon-card.png" height="75">
 </div>
 
-<br>
+<hr />
 
 <div align="center">
   <a href="https://img.shields.io/codefactor/grade/github/IgorMCesar/react-express-mongo-boilerplate">
@@ -69,9 +69,7 @@
   </a>
 </div>
 
-<hr />
-
-<br>
+![Porject Example Gif](https://user-images.githubusercontent.com/5064518/62419349-7badb300-b654-11e9-919b-8e6777aa6ea1.gif)
 
 ## Tech Stack
 
