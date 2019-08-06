@@ -11,6 +11,22 @@ import { mutations } from '../../graphql/graphql';
 import EmailSent from '../EmailSent/EmailSent';
 import _s from './RegisterForm.less';
 
+const getHelpText = (touched, errors) => {
+  return helpKey => {
+    return touched[helpKey] && errors[helpKey] ? errors[helpKey] : '';
+  };
+};
+
+const getValidationStatus = (touched, errors) => {
+  return validationKey => {
+    return touched[validationKey] && errors[validationKey]
+      ? 'error'
+      : touched[validationKey]
+      ? 'success'
+      : undefined;
+  };
+};
+
 const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus }) => {
   const { email, password, name, username } = values;
   props.signUp({ variables: { email, password, name, username } }).then(
@@ -45,6 +61,9 @@ const RegisterForm = props => {
   if (status && status.email) {
     return <EmailSent email={status.email} />;
   } else {
+    const helpText = getHelpText(touched, errors);
+    const validationStatus = getValidationStatus(touched, errors);
+
     return (
       <Card className={_s.RegisterFormCard}>
         <p style={{ fontWeight: 'bold', fontSize: '1.05rem', textAlign: 'center' }}>
@@ -53,14 +72,8 @@ const RegisterForm = props => {
         <Form onSubmit={handleSubmit}>
           <Form.Item
             hasFeedback
-            help={touched.username && errors.username ? errors.username : ''}
-            validateStatus={
-              touched.username && errors.username
-                ? 'error'
-                : touched.username
-                ? 'success'
-                : undefined
-            }
+            help={helpText('username')}
+            validateStatus={validationStatus('username')}
           >
             <Input
               name="username"
@@ -70,13 +83,7 @@ const RegisterForm = props => {
               onBlur={handleBlur}
             />
           </Form.Item>
-          <Form.Item
-            hasFeedback
-            help={touched.name && errors.name ? errors.name : ''}
-            validateStatus={
-              touched.name && errors.name ? 'error' : touched.name ? 'success' : undefined
-            }
-          >
+          <Form.Item hasFeedback help={helpText('name')} validateStatus={validationStatus('name')}>
             <Input
               name="name"
               placeholder="Name"
@@ -87,10 +94,8 @@ const RegisterForm = props => {
           </Form.Item>
           <Form.Item
             hasFeedback
-            help={touched.email && errors.email ? errors.email : ''}
-            validateStatus={
-              touched.email && errors.email ? 'error' : touched.email ? 'success' : undefined
-            }
+            help={helpText('email')}
+            validateStatus={validationStatus('email')}
           >
             <Input
               name="email"
@@ -102,14 +107,8 @@ const RegisterForm = props => {
           </Form.Item>
           <Form.Item
             hasFeedback
-            help={touched.password && errors.password ? errors.password : ''}
-            validateStatus={
-              touched.password && errors.password
-                ? 'error'
-                : touched.password
-                ? 'success'
-                : undefined
-            }
+            help={helpText('password')}
+            validateStatus={validationStatus('password')}
           >
             <Input.Password
               name="password"
@@ -122,14 +121,8 @@ const RegisterForm = props => {
           </Form.Item>
           <Form.Item
             hasFeedback
-            help={touched.confirmPassword && errors.confirmPassword ? errors.confirmPassword : ''}
-            validateStatus={
-              touched.confirmPassword && errors.confirmPassword
-                ? 'error'
-                : touched.confirmPassword
-                ? 'success'
-                : undefined
-            }
+            help={helpText('confirmPassword')}
+            validateStatus={validationStatus('confirmPassword')}
           >
             <Input.Password
               name="confirmPassword"
@@ -140,10 +133,7 @@ const RegisterForm = props => {
               onBlur={handleBlur}
             />
           </Form.Item>
-          <Form.Item
-            help={touched.terms && errors.terms ? errors.terms : ''}
-            validateStatus={touched.terms && errors.terms ? 'error' : undefined}
-          >
+          <Form.Item help={helpText('terms')} validateStatus={validationStatus('terms')}>
             <Checkbox name="terms" value={values.terms} onChange={handleChange}>
               I agree to FAKE Terms of Service
             </Checkbox>
@@ -155,7 +145,7 @@ const RegisterForm = props => {
               loading={isSubmitting}
               className={_s.RegisterFormButton}
             >
-              Resgister
+              Register
             </Button>
             <span>
               Already have an account? <Link to="/">Log In</Link>
