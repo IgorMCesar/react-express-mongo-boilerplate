@@ -18,7 +18,9 @@
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "prettier",
-    "prettier/standard"
+    "prettier/standard",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -27,6 +29,11 @@
   "settings": {
     "react": {
       "version": "latest"
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
     }
   },
   "plugins": ["import", "prettier", "standard", "react", "jsx-a11y"],

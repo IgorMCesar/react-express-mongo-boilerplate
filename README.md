@@ -77,15 +77,15 @@
 
 **Core Dev**
 
-- **[Lerna](https://github.com/lerna/lerna)** —  JavaScript monorepo project manager
+- **[Lerna](https://github.com/lerna/lerna)** — JavaScript monorepo project manager
 
-- [ESLint](https://eslint.org/), [Prettier](https://prettier.io/) —  static code analysis
+- [ESLint](https://eslint.org/), [Prettier](https://prettier.io/) — static code analysis
 
 - [Husky](https://github.com/typicode/husky), [lint-staged](https://github.com/okonet/lint-staged) — Git hooks to run linters against staged git files
 
 **Server**
 
-- [x] **[Node.js](https://nodejs.org)** 
+- [x] **[Node.js](https://nodejs.org)**
 - [x] **[Express](https://github.com/expressjs/express)**
 - [x] **[GraphQL](http://graphql.org/)** with [Apollo Server Express](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-express)
 - [x] **[MongoDB](https://www.mongodb.com/)** with [Mongoose](https://github.com/Automattic/mongoose)
@@ -93,17 +93,18 @@
 - [x] [Body Parser](https://github.com/expressjs/body-parser)
 - [x] [NodeMailer](https://github.com/nodemailer/nodemailer)
 - [x] [Helmet](https://github.com/helmetjs/helmet)
-- [x] [bcrypt.js](https://github.com/dcodeIO/bcrypt.js)
+- [x] [Bcrypt.js](https://github.com/dcodeIO/bcrypt.js)
 - [x] [Morgan](https://github.com/expressjs/morgan)
 - [x] [Joi](https://github.com/hapijs/joi)
 - [x] [Chalk](https://github.com/chalk/chalk)
+- [ ] **[Typescript](https://www.typescriptlang.org/)**
 
 **Client**
 
-- [x] **[React](https://reactjs.org/)** 
+- [x] **[React](https://reactjs.org/)**
 - [x] **[React Router](https://github.com/ReactTraining/react-router)**
 - [x] **[Redux](https://redux.js.org/)**
-- [ ] Redux Thunk
+- [x] Redux Thunk
 - [x] **[Webpack](https://github.com/webpack/webpack)**
 - [x] **[Babel](https://babeljs.io/)**
 - [x] **[GraphQL](http://graphql.org/)** with [Apollo Client (Boost)](https://github.com/apollographql/apollo-client/tree/master/packages/apollo-boost)
@@ -111,9 +112,11 @@
 - [x] [Ant Design](https://ant.design/)
 - [x] [Formik](https://jaredpalmer.com/formik/)
 - [x] [Yup](https://github.com/jquense/yup)
-- [ ] Jest
-- [ ] i18n
-- [ ] Normalizr
+- [ ] **[Jest](https://jestjs.io/)** with 100% test coverage
+- [ ] **[i18n](https://github.com/mashpie/i18n-node)**
+- [ ] **[Normalizr](https://github.com/paularmstrong/normalizr)**
+- [ ] **[Typescript](https://www.typescriptlang.org/)**
+- [ ] **[React 16.8 Hooks](https://reactjs.org/docs/hooks-overview.html)**
 
 ## Getting Started
 
@@ -121,7 +124,7 @@
 
 - [MongoDB](https://www.mongodb.com/download-center/community) or [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 - [Node.js 10.0+](http://nodejs.org)
-- Code Editor —  [Visual Studio Code](https://code.visualstudio.com/) (preferred) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) plug-ins.
+- Code Editor — [Visual Studio Code](https://code.visualstudio.com/) (preferred) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) plug-ins.
 - Command Line Tools
 
 **Note:** If you are new to Node, Express, Mongo, React or GraphQL you may find

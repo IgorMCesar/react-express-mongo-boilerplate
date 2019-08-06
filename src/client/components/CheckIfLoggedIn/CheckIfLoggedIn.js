@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Spin } from 'antd';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import * as actionTypes from '../../store/constants/actionTypes';
+import actions from '../../store/actions';
 
 import 'antd/dist/antd.css';
 
@@ -36,11 +38,11 @@ const CheckIfLoggedIn = props => {
     <Mutation mutation={VERIFY_LOGGED_IN}>
       {(CheckIfLoggedIn, { data, loading, error }) => {
         if (data) {
-          props.onLogIn(true, data.LogIn);
+          props.setFirstAuthState(true, data.LogIn);
           console.log('Did First Auth Validation');
         }
         if (error) {
-          props.onLogIn(false, null);
+          props.setFirstAuthState(false, null);
           console.log('Did First Auth Validation');
         }
         return (
@@ -54,16 +56,28 @@ const CheckIfLoggedIn = props => {
   );
 };
 
+CheckIfLoggedIn.propTypes = {
+  firstAuthValidationDone: PropTypes.bool.isRequired,
+  setFirstAuthState: PropTypes.func.isRequired
+};
+
+CheckIfLoggedIn.defaultProps = {
+  firstAuthValidationDone: false
+};
+
 const mapStateToProps = state => {
   return {
-    firstAuthValidationDone: state.authState.firstAuthValidationDone
+    firstAuthValidationDone: state.auth.firstAuthValidationDone
   };
 };
+
 const mapDispatchToProps = dispatch => {
-  return {
-    onLogIn: (loggedIn, user) =>
-      dispatch({ type: actionTypes.SET_FIRST_AUTH_STATE, loggedIn, user })
-  };
+  return bindActionCreators(
+    {
+      setFirstAuthState: actions.setFirstAuthState
+    },
+    dispatch
+  );
 };
 
 const connectedCheckIfLoggedIn = connect(

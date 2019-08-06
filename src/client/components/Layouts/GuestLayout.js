@@ -17,6 +17,11 @@ const GuestLayout = props => (
         selectedKeys={[props.location.pathname]}
         style={{ lineHeight: '65px' }}
       >
+        <Menu.Item key="/">
+          <Link to="/" style={{ fontWeight: '500' }}>
+            <img src="/public/images/menu.svg" alt="menu" className={_s.logo} />
+          </Link>
+        </Menu.Item>
         <Menu.Item key="/login" className={_s.login}>
           <Link to="/login" style={{ fontWeight: '500' }}>
             Log In

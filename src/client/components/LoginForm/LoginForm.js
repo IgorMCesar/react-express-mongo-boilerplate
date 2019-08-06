@@ -1,23 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { withFormik } from 'formik';
-
 import { Form, Icon, Input, Button, Checkbox, Card, Alert } from 'antd';
 
 import validators from '../../validators/validators';
 import { mutations } from '../../graphql/graphql';
-import * as actionTypes from '../../store/constants/actionTypes';
+import actions from '../../store/actions';
 
 import _s from './LoginForm.less';
 
 const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus }) => {
   const { email, password } = values;
-
   props.LogIn({ variables: { email, password } }).then(
     res => {
-      props.onLogIn(res.data.LogIn);
+      props.setAuthUser(res.data.LogIn);
     },
     e => {
       setSubmitting(false);
@@ -31,6 +31,7 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
     }
   );
 };
+
 const LoginForm = props => {
   const { values, handleChange, handleBlur, handleSubmit, errors, isSubmitting } = props;
   return (
@@ -88,17 +89,31 @@ const LoginForm = props => {
   );
 };
 
+LoginForm.propTypes = {
+  user: PropTypes.object,
+  loggedIn: PropTypes.bool.isRequired,
+  setAuthUser: PropTypes.func.isRequired
+};
+
+LoginForm.defaultProps = {
+  user: null,
+  loggedIn: false
+};
+
 const mapStateToProps = state => {
   return {
-    user: state.authState.user,
-    loggedIn: state.authState.loggedIn
+    user: state.auth.user,
+    loggedIn: state.auth.loggedIn
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    onLogIn: user => dispatch({ type: actionTypes.SET_AUTH_USER, user })
-  };
+  return bindActionCreators(
+    {
+      setAuthUser: actions.setAuthUser
+    },
+    dispatch
+  );
 };
 
 export default compose(

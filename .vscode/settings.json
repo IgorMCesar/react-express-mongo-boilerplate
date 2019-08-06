@@ -1,4 +1,10 @@
 {
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "build": true,
+    "node_modules": true
+  },
   "editor.formatOnSave": true,
   "prettier.eslintIntegration": false,
   "eslint.validate": ["javascript", "javascriptreact"],
