@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { withFormik } from 'formik';
-import { Form, Icon, Input, Button, Checkbox, Card, Alert } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Card, Alert, message } from 'antd';
 
 import validators from '../../validators/validators';
 import { mutations } from '../../graphql/graphql';
@@ -28,6 +28,7 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
         // if (x.message.includes('username')) errors.username = 'Username has already been taken.';
       });
       setErrors({ auth: 'Incorrect email or password.' });
+      message.error('Incorrect email or password.');
     }
   );
 };

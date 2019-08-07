@@ -97,7 +97,6 @@
 - [x] [Morgan](https://github.com/expressjs/morgan)
 - [x] [Joi](https://github.com/hapijs/joi)
 - [x] [Chalk](https://github.com/chalk/chalk)
-- [ ] **[Typescript](https://www.typescriptlang.org/)**
 
 **Client**
 
@@ -115,7 +114,6 @@
 - [ ] **[Jest](https://jestjs.io/)** with 100% test coverage
 - [ ] **[i18n](https://github.com/mashpie/i18n-node)**
 - [ ] **[Normalizr](https://github.com/paularmstrong/normalizr)**
-- [ ] **[Typescript](https://www.typescriptlang.org/)**
 - [ ] **[React 16.8 Hooks](https://reactjs.org/docs/hooks-overview.html)**
 
 ## Getting Started

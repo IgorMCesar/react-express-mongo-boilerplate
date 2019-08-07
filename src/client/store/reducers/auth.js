@@ -2,13 +2,13 @@ import * as setAuthUser from '../actions/auth/setAuthUser';
 import * as removeAuthUser from '../actions/auth/removeAuthUser';
 import * as setFirstAuthState from '../actions/auth/setFirstAuthState';
 
-const defaultState = {
+const initialState = {
   user: null,
   loggedIn: false,
   firstAuthValidationDone: false
 };
 
-export default (state = defaultState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case setAuthUser.SET_AUTH_USER:
       return {
