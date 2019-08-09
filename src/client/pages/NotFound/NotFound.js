@@ -23,7 +23,7 @@ const NotFound = props => (
 
 const mapStateToProps = state => {
   return {
-    loggedIn: state.authState.loggedIn
+    loggedIn: state.auth.loggedIn
   };
 };
 

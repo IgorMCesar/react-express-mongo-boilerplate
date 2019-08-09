@@ -19,8 +19,8 @@ const GuestRoute = ({ component: Component, loggedIn, user, ...rest }) => {
 
 const mapStateToProps = state => {
   return {
-    user: state.authState.user,
-    loggedIn: state.authState.loggedIn
+    user: state.auth.user,
+    loggedIn: state.auth.loggedIn
   };
 };
 

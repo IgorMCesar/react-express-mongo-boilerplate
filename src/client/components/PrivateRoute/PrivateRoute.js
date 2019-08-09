@@ -3,7 +3,6 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const PrivateRoute = ({ component: Component, loggedIn, user, ...rest }) => {
-  console.log(loggedIn);
   return (
     <Route
       {...rest}
@@ -20,8 +19,8 @@ const PrivateRoute = ({ component: Component, loggedIn, user, ...rest }) => {
 
 const mapStateToProps = state => {
   return {
-    user: state.authState.user,
-    loggedIn: state.authState.loggedIn
+    user: state.auth.user,
+    loggedIn: state.auth.loggedIn
   };
 };
 

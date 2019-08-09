@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Layout, Menu, Avatar, Icon } from 'antd';
 import gql from 'graphql-tag';
 import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { withRouter } from 'react-router';
-import * as actionTypes from '../../store/constants/actionTypes';
+import actions from '../../store/actions';
 
 import _s from './Layouts.less';
 
@@ -24,7 +26,7 @@ class LoggedLayout extends React.Component {
     if (e.key === 'signOut') {
       LogOut()
         .then(res => {
-          this.props.onLogOut();
+          this.props.removeAuthUser();
           this.props.history.push('/');
         })
         .catch(err => console.log(err));
@@ -77,17 +79,31 @@ class LoggedLayout extends React.Component {
   }
 }
 
+LoggedLayout.propTypes = {
+  user: PropTypes.object,
+  loggedIn: PropTypes.bool.isRequired,
+  removeAuthUser: PropTypes.func.isRequired
+};
+
+LoggedLayout.defaultProps = {
+  user: null,
+  loggedIn: false
+};
+
 const mapStateToProps = state => {
   return {
-    user: state.authState.user,
-    loggedIn: state.authState.loggedIn
+    user: state.auth.user,
+    loggedIn: state.auth.loggedIn
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    onLogOut: () => dispatch({ type: actionTypes.REMOVE_AUTH_USER })
-  };
+  return bindActionCreators(
+    {
+      removeAuthUser: actions.removeAuthUser
+    },
+    dispatch
+  );
 };
 
 const connectedLoggedLayout = connect(

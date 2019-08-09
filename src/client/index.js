@@ -5,10 +5,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 
 import client from './config/createApolloClient';
-import store from './config/createStore';
+import configureStore, { history } from './config/configureStore';
 
 import App from './App';
 
+const store = configureStore();
 const Root = () => {
   return (
     <div className="App container">
@@ -16,7 +17,7 @@ const Root = () => {
         <Provider store={store}>
           <Router>
             <ApolloProvider client={client}>
-              <App />
+              <App history={history} />
             </ApolloProvider>
           </Router>
         </Provider>
