@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import { withFormik } from 'formik';
 
-import { Form, Icon, Input, Button, Checkbox, Card, message } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
 
 import validators from '../../validators/validators';
 import { mutations } from '../../graphql/graphql';
@@ -23,11 +23,9 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
       e.graphQLErrors.map(x => {
         if (x.message.includes('email')) {
           errors.email = 'Email has already been taken.';
-          message.error(errors.email);
         }
         if (x.message.includes('username')) {
           errors.username = 'Username has already been taken.';
-          message.error(errors.username);
         }
       });
       setSubmitting(false);

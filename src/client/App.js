@@ -30,6 +30,4 @@ App.propTypes = {
   history: PropTypes.object
 };
 
-App.defaultProps = {};
-
 export default App;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Menu, Avatar, Icon } from 'antd';
+import { Layout, Menu, Avatar, Icon, message } from 'antd';
 import gql from 'graphql-tag';
 import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { withRouter } from 'react-router';
-import actions from '../../store/actions';
+import actions from '../../store/actions/actions';
 
 import _s from './Layouts.less';
 
@@ -27,6 +27,7 @@ class LoggedLayout extends React.Component {
       LogOut()
         .then(res => {
           this.props.removeAuthUser();
+          message.success('Logged out successfully');
           this.props.history.push('/');
         })
         .catch(err => console.log(err));
@@ -52,6 +53,11 @@ class LoggedLayout extends React.Component {
                   style={{ lineHeight: '65px' }}
                   onClick={e => this.handleClick(e, LogOut)}
                 >
+                  <Menu.Item key="logo">
+                    <Link to="/">
+                      <img src="/public/images/logo.png" alt="menu" className={_s.logo} />
+                    </Link>
+                  </Menu.Item>
                   <Menu.Item key="/">
                     <Link to="/">Dashboard</Link>
                   </Menu.Item>
@@ -73,7 +79,9 @@ class LoggedLayout extends React.Component {
           </Mutation>
         </Header>
         <Content className={_s.Content}>{children}</Content>
-        <Footer style={{ textAlign: 'center' }}>React Node Boilerplate by IgorMCesar</Footer>
+        <Footer style={{ textAlign: 'center' }}>
+          MER(A)N - FullStack Boilerplate by IgorMCesar
+        </Footer>
       </Layout>
     );
   }
@@ -83,11 +91,6 @@ LoggedLayout.propTypes = {
   user: PropTypes.object,
   loggedIn: PropTypes.bool.isRequired,
   removeAuthUser: PropTypes.func.isRequired
-};
-
-LoggedLayout.defaultProps = {
-  user: null,
-  loggedIn: false
 };
 
 const mapStateToProps = state => {

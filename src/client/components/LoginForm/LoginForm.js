@@ -9,7 +9,7 @@ import { Form, Icon, Input, Button, Checkbox, Card, Alert, message } from 'antd'
 
 import validators from '../../validators/validators';
 import { mutations } from '../../graphql/graphql';
-import actions from '../../store/actions';
+import actions from '../../store/actions/actions';
 
 import _s from './LoginForm.less';
 
@@ -18,6 +18,7 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
   props.LogIn({ variables: { email, password } }).then(
     res => {
       props.setAuthUser(res.data.LogIn);
+      message.success('Logged in successfully');
     },
     e => {
       setSubmitting(false);
@@ -28,7 +29,6 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
         // if (x.message.includes('username')) errors.username = 'Username has already been taken.';
       });
       setErrors({ auth: 'Incorrect email or password.' });
-      message.error('Incorrect email or password.');
     }
   );
 };
@@ -57,6 +57,7 @@ const LoginForm = props => {
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
+            className={_s.loginFormInput}
           />
         </Form.Item>
         <Form.Item>
@@ -68,6 +69,7 @@ const LoginForm = props => {
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
+            className={_s.loginFormInput}
           />
         </Form.Item>
         <Form.Item style={{ marginBottom: 'unset' }}>
@@ -94,11 +96,6 @@ LoginForm.propTypes = {
   user: PropTypes.object,
   loggedIn: PropTypes.bool.isRequired,
   setAuthUser: PropTypes.func.isRequired
-};
-
-LoginForm.defaultProps = {
-  user: null,
-  loggedIn: false
 };
 
 const mapStateToProps = state => {
