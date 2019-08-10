@@ -27,7 +27,7 @@ class LoggedLayout extends React.Component {
       LogOut()
         .then(res => {
           this.props.removeAuthUser();
-          message.info('Logged out successfully');
+          message.success('Logged out successfully');
           this.props.history.push('/');
         })
         .catch(err => console.log(err));
