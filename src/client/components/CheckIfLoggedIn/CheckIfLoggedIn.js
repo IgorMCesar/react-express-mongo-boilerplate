@@ -6,7 +6,7 @@ import { Mutation } from 'react-apollo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import actions from '../../store/actions';
+import actions from '../../store/actions/actions';
 
 import 'antd/dist/antd.css';
 

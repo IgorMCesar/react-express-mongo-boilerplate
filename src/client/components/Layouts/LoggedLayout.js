@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { withRouter } from 'react-router';
-import actions from '../../store/actions';
+import actions from '../../store/actions/actions';
 
 import _s from './Layouts.less';
 
@@ -73,7 +73,9 @@ class LoggedLayout extends React.Component {
           </Mutation>
         </Header>
         <Content className={_s.Content}>{children}</Content>
-        <Footer style={{ textAlign: 'center' }}>React Node Boilerplate by IgorMCesar</Footer>
+        <Footer style={{ textAlign: 'center' }}>
+          MER(A)N - FullStack Boilerplate by IgorMCesar
+        </Footer>
       </Layout>
     );
   }

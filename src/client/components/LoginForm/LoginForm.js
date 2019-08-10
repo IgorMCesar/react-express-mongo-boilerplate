@@ -9,7 +9,7 @@ import { Form, Icon, Input, Button, Checkbox, Card, Alert, message } from 'antd'
 
 import validators from '../../validators/validators';
 import { mutations } from '../../graphql/graphql';
-import actions from '../../store/actions';
+import actions from '../../store/actions/actions';
 
 import _s from './LoginForm.less';
 
@@ -57,6 +57,7 @@ const LoginForm = props => {
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
+            className={_s.loginFormInput}
           />
         </Form.Item>
         <Form.Item>
@@ -68,6 +69,7 @@ const LoginForm = props => {
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
+            className={_s.loginFormInput}
           />
         </Form.Item>
         <Form.Item style={{ marginBottom: 'unset' }}>

@@ -18,8 +18,8 @@ const GuestLayout = props => (
         style={{ lineHeight: '65px' }}
       >
         <Menu.Item key="/">
-          <Link to="/" style={{ fontWeight: '500' }}>
-            <img src="/public/images/menu.svg" alt="menu" className={_s.logo} />
+          <Link to="/">
+            <img src="/public/images/logo.png" alt="menu" className={_s.logo} />
           </Link>
         </Menu.Item>
         <Menu.Item key="/login" className={_s.login}>
@@ -31,7 +31,7 @@ const GuestLayout = props => (
       </Menu>
     </Header>
     <Content className={_s.Content}>{props.children}</Content>
-    <Footer style={{ textAlign: 'center' }}>React Node Boilerplate by IgorMCesar</Footer>
+    <Footer style={{ textAlign: 'center' }}>MER(A)N - FullStack Boilerplate by IgorMCesar</Footer>
   </Layout>
 );
 
