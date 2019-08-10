@@ -1,11 +1,7 @@
-import * as setAuthUser from './auth/setAuthUser';
-import * as removeAuthUser from './auth/removeAuthUser';
-import * as setFirstAuthState from './auth/setFirstAuthState';
+import authActions from './auth/auth';
 
 const actions = {
-  ...setAuthUser,
-  ...removeAuthUser,
-  ...setFirstAuthState
+  ...authActions
 };
 
 export default actions;

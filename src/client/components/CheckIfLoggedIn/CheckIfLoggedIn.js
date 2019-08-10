@@ -61,10 +61,6 @@ CheckIfLoggedIn.propTypes = {
   setFirstAuthState: PropTypes.func.isRequired
 };
 
-CheckIfLoggedIn.defaultProps = {
-  firstAuthValidationDone: false
-};
-
 const mapStateToProps = state => {
   return {
     firstAuthValidationDone: state.auth.firstAuthValidationDone

@@ -18,6 +18,7 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
   props.LogIn({ variables: { email, password } }).then(
     res => {
       props.setAuthUser(res.data.LogIn);
+      message.info('Logged in successfully');
     },
     e => {
       setSubmitting(false);
@@ -28,7 +29,6 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
         // if (x.message.includes('username')) errors.username = 'Username has already been taken.';
       });
       setErrors({ auth: 'Incorrect email or password.' });
-      message.error('Incorrect email or password.');
     }
   );
 };
@@ -96,11 +96,6 @@ LoginForm.propTypes = {
   user: PropTypes.object,
   loggedIn: PropTypes.bool.isRequired,
   setAuthUser: PropTypes.func.isRequired
-};
-
-LoginForm.defaultProps = {
-  user: null,
-  loggedIn: false
 };
 
 const mapStateToProps = state => {

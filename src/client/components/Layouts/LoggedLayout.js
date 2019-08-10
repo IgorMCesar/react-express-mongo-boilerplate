@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Menu, Avatar, Icon } from 'antd';
+import { Layout, Menu, Avatar, Icon, message } from 'antd';
 import gql from 'graphql-tag';
 import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
@@ -27,6 +27,7 @@ class LoggedLayout extends React.Component {
       LogOut()
         .then(res => {
           this.props.removeAuthUser();
+          message.info('Logged out successfully');
           this.props.history.push('/');
         })
         .catch(err => console.log(err));
@@ -90,11 +91,6 @@ LoggedLayout.propTypes = {
   user: PropTypes.object,
   loggedIn: PropTypes.bool.isRequired,
   removeAuthUser: PropTypes.func.isRequired
-};
-
-LoggedLayout.defaultProps = {
-  user: null,
-  loggedIn: false
 };
 
 const mapStateToProps = state => {
