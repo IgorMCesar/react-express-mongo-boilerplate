@@ -52,6 +52,11 @@ class LoggedLayout extends React.Component {
                   style={{ lineHeight: '65px' }}
                   onClick={e => this.handleClick(e, LogOut)}
                 >
+                  <Menu.Item key="logo">
+                    <Link to="/">
+                      <img src="/public/images/logo.png" alt="menu" className={_s.logo} />
+                    </Link>
+                  </Menu.Item>
                   <Menu.Item key="/">
                     <Link to="/">Dashboard</Link>
                   </Menu.Item>

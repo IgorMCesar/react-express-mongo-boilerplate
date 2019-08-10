@@ -17,7 +17,7 @@ const GuestLayout = props => (
         selectedKeys={[props.location.pathname]}
         style={{ lineHeight: '65px' }}
       >
-        <Menu.Item key="/">
+        <Menu.Item key="logo">
           <Link to="/">
             <img src="/public/images/logo.png" alt="menu" className={_s.logo} />
           </Link>
