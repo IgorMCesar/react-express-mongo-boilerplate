@@ -18,7 +18,7 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
   props.LogIn({ variables: { email, password } }).then(
     res => {
       props.setAuthUser(res.data.LogIn);
-      message.info('Logged in successfully');
+      message.success('Logged in successfully');
     },
     e => {
       setSubmitting(false);
