@@ -4,8 +4,10 @@ import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
-import { withFormik } from 'formik';
+import { withFormik, Field } from 'formik';
 import { Form, Icon, Input, Button, Checkbox, Card, Alert, message } from 'antd';
+
+import { FormInputField } from '../FormInputField/FormInputField';
 
 import validators from '../../validators/validators';
 import { mutations } from '../../graphql/graphql';
@@ -34,9 +36,9 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
 };
 
 const LoginForm = props => {
-  const { values, handleChange, handleBlur, handleSubmit, errors, isSubmitting } = props;
+  const { handleSubmit, errors, isSubmitting } = props;
   return (
-    <Card>
+    <Card className={_s.LoginFormCard}>
       <p style={{ fontWeight: 'bold', fontSize: '1.05rem' }}>
         <Icon style={{ paddingRight: '5px' }} type="login" /> Log In
       </p>
@@ -48,30 +50,22 @@ const LoginForm = props => {
           style={{ marginBottom: '1.05rem', maxWidth: '300px' }}
         />
       )}
-      <form className={_s.loginForm} onSubmit={handleSubmit}>
-        <Form.Item>
-          <Input
-            name="email"
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            placeholder="Email"
-            value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={_s.loginFormInput}
-          />
-        </Form.Item>
-        <Form.Item>
-          <Input
-            name="password"
-            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            type="password"
-            placeholder="Password"
-            value={values.password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={_s.loginFormInput}
-          />
-        </Form.Item>
+      <Form onSubmit={handleSubmit}>
+        <Field
+          InputType={Input}
+          component={FormInputField}
+          prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+          name="email"
+          placeholder="Email"
+        />
+        <Field
+          InputType={Input}
+          component={FormInputField}
+          prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+          name="password"
+          placeholder="Password"
+          type="password"
+        />
         <Form.Item style={{ marginBottom: 'unset' }}>
           <Checkbox>Remember me</Checkbox>
           <a className={_s.loginFormForgot} href="/">
@@ -87,7 +81,7 @@ const LoginForm = props => {
           </Button>
           Or <Link to="/register">register now!</Link>
         </Form.Item>
-      </form>
+      </Form>
     </Card>
   );
 };

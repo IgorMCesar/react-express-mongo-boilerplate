@@ -1,9 +1,10 @@
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { Link } from 'react-router-dom';
-import { withFormik } from 'formik';
-
+import { withFormik, Field } from 'formik';
 import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
+
+import { FormInputField } from '../FormInputField/FormInputField';
 
 import validators from '../../validators/validators';
 import { mutations } from '../../graphql/graphql';
@@ -35,16 +36,7 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
 };
 
 const RegisterForm = props => {
-  const {
-    values,
-    status,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    touched,
-    errors,
-    isSubmitting
-  } = props;
+  const { status, handleSubmit, isSubmitting } = props;
 
   if (status && status.email) {
     return <EmailSent email={status.email} />;
@@ -55,103 +47,52 @@ const RegisterForm = props => {
           <Icon style={{ paddingRight: '5px' }} type="user-add" /> Register
         </p>
         <Form onSubmit={handleSubmit}>
-          <Form.Item
+          <Field
+            InputType={Input}
+            component={FormInputField}
+            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            name="username"
+            placeholder="Username"
             hasFeedback
-            help={touched.username && errors.username ? errors.username : ''}
-            validateStatus={
-              touched.username && errors.username
-                ? 'error'
-                : touched.username
-                ? 'success'
-                : undefined
-            }
-          >
-            <Input
-              name="username"
-              placeholder="Username"
-              value={values.username}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </Form.Item>
-          <Form.Item
+          />
+          <Field
+            InputType={Input}
+            component={FormInputField}
+            prefix={<Icon type="idcard" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            name="name"
+            placeholder="Name"
             hasFeedback
-            help={touched.name && errors.name ? errors.name : ''}
-            validateStatus={
-              touched.name && errors.name ? 'error' : touched.name ? 'success' : undefined
-            }
-          >
-            <Input
-              name="name"
-              placeholder="Name"
-              value={values.name}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </Form.Item>
-          <Form.Item
+          />
+          <Field
+            InputType={Input}
+            component={FormInputField}
+            prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            name="email"
+            placeholder="Email"
             hasFeedback
-            help={touched.email && errors.email ? errors.email : ''}
-            validateStatus={
-              touched.email && errors.email ? 'error' : touched.email ? 'success' : undefined
-            }
-          >
-            <Input
-              name="email"
-              placeholder="E-mail"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </Form.Item>
-          <Form.Item
+          />
+          <Field
+            InputType={Input.Password}
+            component={FormInputField}
+            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            name="password"
+            placeholder="Password"
             hasFeedback
-            help={touched.password && errors.password ? errors.password : ''}
-            validateStatus={
-              touched.password && errors.password
-                ? 'error'
-                : touched.password
-                ? 'success'
-                : undefined
-            }
-          >
-            <Input.Password
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </Form.Item>
-          <Form.Item
+          />
+          <Field
+            InputType={Input.Password}
+            component={FormInputField}
+            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            name="confirmPassword"
+            placeholder="Confirm Password"
             hasFeedback
-            help={touched.confirmPassword && errors.confirmPassword ? errors.confirmPassword : ''}
-            validateStatus={
-              touched.confirmPassword && errors.confirmPassword
-                ? 'error'
-                : touched.confirmPassword
-                ? 'success'
-                : undefined
-            }
-          >
-            <Input.Password
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirm Password"
-              value={values.confirmPassword}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </Form.Item>
-          <Form.Item
-            help={touched.terms && errors.terms ? errors.terms : ''}
-            validateStatus={touched.terms && errors.terms ? 'error' : undefined}
-          >
-            <Checkbox name="terms" value={values.terms} onChange={handleChange}>
-              I agree to FAKE Terms of Service
-            </Checkbox>
-          </Form.Item>
+          />
+          <Field
+            InputType={Checkbox}
+            component={FormInputField}
+            name="terms"
+            innerData="I agree to FAKE Terms of Service"
+          />
           <Form.Item style={{ marginBottom: 'unset' }}>
             <Button
               type="primary"
@@ -159,7 +100,7 @@ const RegisterForm = props => {
               loading={isSubmitting}
               className={_s.RegisterFormButton}
             >
-              Resgister
+              Register
             </Button>
             <span>
               Already have an account? <Link to="/">Log In</Link>
