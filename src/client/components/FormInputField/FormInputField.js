@@ -10,7 +10,7 @@ export const FormInputField = ({
   hideErrorMessage,
   ...props
 }) => {
-  const errorMessage = touched[field.name] && errors[field.name] && !hideErrorMessage;
+  const errorMessage = hideErrorMessage ? false : touched[field.name] && errors[field.name];
   let inputStatus;
 
   if (errorMessage) {
