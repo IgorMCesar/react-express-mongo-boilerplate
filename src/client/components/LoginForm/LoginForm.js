@@ -57,6 +57,7 @@ const LoginForm = props => {
           prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
           name="email"
           placeholder="Email"
+          hideErrorMessage={true}
         />
         <Field
           InputType={Input}
@@ -65,6 +66,7 @@ const LoginForm = props => {
           name="password"
           placeholder="Password"
           type="password"
+          hideErrorMessage={true}
         />
         <Form.Item style={{ marginBottom: 'unset' }}>
           <Checkbox>Remember me</Checkbox>

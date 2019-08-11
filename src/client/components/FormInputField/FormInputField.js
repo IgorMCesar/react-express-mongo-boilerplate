@@ -7,9 +7,10 @@ export const FormInputField = ({
   InputType,
   innerData,
   hasFeedback,
+  hideErrorMessage,
   ...props
 }) => {
-  const errorMessage = touched[field.name] && errors[field.name];
+  const errorMessage = touched[field.name] && errors[field.name] && !hideErrorMessage;
   let inputStatus;
 
   if (errorMessage) {
