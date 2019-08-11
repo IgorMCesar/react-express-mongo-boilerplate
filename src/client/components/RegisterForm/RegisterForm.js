@@ -87,12 +87,9 @@ const RegisterForm = props => {
             placeholder="Confirm Password"
             hasFeedback
           />
-          <Field
-            InputType={Checkbox}
-            component={FormInputField}
-            name="terms"
-            innerData="I agree to FAKE Terms of Service"
-          />
+          <Field InputType={Checkbox} component={FormInputField} name="terms">
+            I agree to FAKE Terms of Service
+          </Field>
           <Form.Item style={{ marginBottom: 'unset' }}>
             <Button
               type="primary"

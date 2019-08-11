@@ -5,7 +5,6 @@ export const FormInputField = ({
   field, // { name, value, onChange, onBlur }
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
   InputType,
-  innerData,
   hasFeedback,
   hideErrorMessage,
   ...props
@@ -22,7 +21,7 @@ export const FormInputField = ({
   return (
     <Form.Item help={errorMessage} validateStatus={inputStatus} hasFeedback={hasFeedback}>
       <InputType {...field} {...props}>
-        {innerData}
+        {props.children}
       </InputType>
     </Form.Item>
   );
