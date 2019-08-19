@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Icon, Card } from 'antd';
 
@@ -15,6 +16,10 @@ const EmailSent = props => {
       Email sent to {email}! Check your email and verify your account.
     </Card>
   );
+};
+
+EmailSent.propTypes = {
+  email: PropTypes.string.isRequired
 };
 
 export default EmailSent;

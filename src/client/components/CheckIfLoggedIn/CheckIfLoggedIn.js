@@ -47,18 +47,13 @@ const CheckIfLoggedIn = props => {
         }
         return (
           <CallLogin CheckIfLoggedIn={CheckIfLoggedIn}>
-            {loading ? <Spin /> : null}
-            {data || error ? <div>{props.children}</div> : null}
+            {loading && <Spin />}
+            {(data || error) && props.children}
           </CallLogin>
         );
       }}
     </Mutation>
   );
-};
-
-CheckIfLoggedIn.propTypes = {
-  firstAuthValidationDone: PropTypes.bool.isRequired,
-  setFirstAuthState: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -74,6 +69,11 @@ const mapDispatchToProps = dispatch => {
     },
     dispatch
   );
+};
+
+CheckIfLoggedIn.propTypes = {
+  firstAuthValidationDone: PropTypes.bool.isRequired,
+  setFirstAuthState: PropTypes.func.isRequired
 };
 
 const connectedCheckIfLoggedIn = connect(

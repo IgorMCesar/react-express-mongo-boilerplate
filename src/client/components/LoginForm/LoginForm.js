@@ -88,12 +88,6 @@ const LoginForm = props => {
   );
 };
 
-LoginForm.propTypes = {
-  user: PropTypes.object,
-  loggedIn: PropTypes.bool.isRequired,
-  setAuthUser: PropTypes.func.isRequired
-};
-
 const mapStateToProps = state => {
   return {
     user: state.auth.user,
@@ -108,6 +102,12 @@ const mapDispatchToProps = dispatch => {
     },
     dispatch
   );
+};
+
+LoginForm.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
+  setAuthUser: PropTypes.func.isRequired,
+  user: PropTypes.object
 };
 
 export default compose(

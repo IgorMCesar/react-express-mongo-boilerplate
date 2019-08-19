@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card } from 'antd';
 import { connect } from 'react-redux';
 
@@ -8,7 +9,7 @@ import GuestLayout from '../../components/Layouts/GuestLayout';
 // import _s from './Dashboard.less';
 
 const NotFound = props => (
-  <div>
+  <>
     {props.loggedIn ? (
       <LoggedLayout>
         <Card>404 - Page Not Found</Card>
@@ -18,13 +19,17 @@ const NotFound = props => (
         <Card>404 - Page Not Found</Card>
       </GuestLayout>
     )}
-  </div>
+  </>
 );
 
 const mapStateToProps = state => {
   return {
     loggedIn: state.auth.loggedIn
   };
+};
+
+NotFound.propTypes = {
+  loggedIn: PropTypes.bool.isRequired
 };
 
 const connectedNotFound = connect(mapStateToProps)(NotFound);

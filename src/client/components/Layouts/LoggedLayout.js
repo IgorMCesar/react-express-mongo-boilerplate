@@ -63,10 +63,10 @@ class LoggedLayout extends React.Component {
                   </Menu.Item>
                   <SubMenu
                     title={
-                      <div>
+                      <>
                         <Avatar size="medium" icon="user" className={_s.UserAvatar} />
                         <Icon type="down" style={{ marginLeft: '10px' }} />
-                      </div>
+                      </>
                     }
                     style={{ float: 'right' }}
                   >
@@ -87,12 +87,6 @@ class LoggedLayout extends React.Component {
   }
 }
 
-LoggedLayout.propTypes = {
-  user: PropTypes.object,
-  loggedIn: PropTypes.bool.isRequired,
-  removeAuthUser: PropTypes.func.isRequired
-};
-
 const mapStateToProps = state => {
   return {
     user: state.auth.user,
@@ -107,6 +101,12 @@ const mapDispatchToProps = dispatch => {
     },
     dispatch
   );
+};
+
+LoggedLayout.propTypes = {
+  user: PropTypes.object,
+  loggedIn: PropTypes.bool.isRequired,
+  removeAuthUser: PropTypes.func.isRequired
 };
 
 const connectedLoggedLayout = connect(

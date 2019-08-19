@@ -2,11 +2,10 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const chalk = require('chalk');
 const MongoStore = require('connect-mongo')(session);
 const { ApolloServer } = require('apollo-server-express');
+
+const loggerConfig = require('./config/loggerConfig');
 
 const typeDefs = require('./graphql/schemas/schemas');
 const resolvers = require('./graphql/resolvers/resolvers');
@@ -63,30 +62,7 @@ const server = new ApolloServer({
 
 // Logging with Morgan
 if (NODE_ENV === 'development') {
-  morgan.token('graphql-query', req => {
-    const { query, variables, operationName } = req.body;
-    const { origin, cookie } = req.headers;
-    return [
-      '\n\n',
-      chalk.magenta.bold('-------GraphQL-------\n'),
-      chalk.blue.bold('Origin:'),
-      chalk.yellow.bold(origin),
-      '\n',
-      chalk.blue.bold('Cookie:'),
-      chalk.yellow.bold(cookie),
-      '\n',
-      chalk.blue.bold('Operation Name:'),
-      chalk.yellow.bold(operationName),
-      '\n',
-      chalk.blue.bold('Query: '),
-      chalk.green.bold(query),
-      chalk.blue.bold('Variables:'),
-      chalk.yellow.bold(JSON.stringify(variables)),
-      chalk.magenta.bold('\n---------------------')
-    ].join(' ');
-  });
-  app.use(bodyParser.json());
-  app.use(morgan(':graphql-query'));
+  loggerConfig(app);
 }
 
 server.applyMiddleware({
