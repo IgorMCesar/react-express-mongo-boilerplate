@@ -12,17 +12,13 @@ import App from './App';
 const store = configureStore();
 const Root = () => {
   return (
-    <div className="App container">
-      <div className="jumbotron">
-        <Provider store={store}>
-          <Router>
-            <ApolloProvider client={client}>
-              <App history={history} />
-            </ApolloProvider>
-          </Router>
-        </Provider>
-      </div>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <ApolloProvider client={client}>
+          <App history={history} />
+        </ApolloProvider>
+      </Router>
+    </Provider>
   );
 };
 

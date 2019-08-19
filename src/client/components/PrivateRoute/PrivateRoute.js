@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -22,6 +23,12 @@ const mapStateToProps = state => {
     user: state.auth.user,
     loggedIn: state.auth.loggedIn
   };
+};
+
+PrivateRoute.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
+  Component: PropTypes.elementType,
+  user: PropTypes.object
 };
 
 const ConnectedPrivateRoute = connect(mapStateToProps)(PrivateRoute);

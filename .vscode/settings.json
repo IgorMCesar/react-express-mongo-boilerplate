@@ -3,6 +3,7 @@
     "**/.DS_Store": true,
     "**/.git": true,
     "build": true,
+    "**/node_modules": true,
     "node_modules": true
   },
   "editor.formatOnSave": true,

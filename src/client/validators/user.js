@@ -53,31 +53,3 @@ export const registerSchema = yup.object().shape({
     .required(requiredMessage('Name')),
   terms: yup.boolean().oneOf([true], 'Must Accept Terms and Conditions')
 });
-
-// export const registerSchema = yup.object().shape({
-//   email: yup
-//     .string()
-//     .min(3)
-//     .max(255)
-//     .email()
-//     .required(),
-//   password: yup
-//     .string()
-//     .min(8)
-//     .max(50)
-//     .matches(
-//       /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/,
-//       'Must have at least one letter and one digit.'
-//     )
-//     .required(),
-//   username: yup
-//     .string()
-//     .min(4)
-//     .max(30)
-//     .required(),
-//   name: yup
-//     .string()
-//     .min(4)
-//     .max(255)
-//     .required()
-// });
