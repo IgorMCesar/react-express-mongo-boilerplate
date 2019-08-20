@@ -1,6 +1,6 @@
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const chalk = require('chalk');
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
+import chalk from 'chalk';
 
 const loggerConfig = app => {
   morgan.token('graphql-query', req => {
@@ -31,4 +31,4 @@ const loggerConfig = app => {
   app.use(morgan(':graphql-query'));
 };
 
-module.exports = loggerConfig;
+export default loggerConfig;

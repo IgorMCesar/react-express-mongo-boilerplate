@@ -5,8 +5,8 @@
   "main": "./index.js",
   "scripts": {
     "check-staged": "lint-staged",
-    "start": "node src/server/index.js",
-    "dev": "nodemon -r dotenv/config index.js dotenv_config_path=../../.env"
+    "start": "node -r esm index.js",
+    "dev": "nodemon -r esm -r dotenv/config index.js dotenv_config_path=../../.env"
   },
   "keywords": [],
   "author": "Igor Marracho Carriço Cesar",
@@ -17,6 +17,7 @@
     "body-parser": "^1.19.0",
     "chalk": "^2.4.2",
     "connect-mongo": "^3.0.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "graphql": "^14.4.2",

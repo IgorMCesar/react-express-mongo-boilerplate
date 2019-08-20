@@ -1,6 +1,6 @@
-const { SchemaDirectiveVisitor } = require('apollo-server-express');
-const { defaultFieldResolver } = require('graphql');
-const { ensureLoggedIn } = require('../../helpers/auth');
+import { SchemaDirectiveVisitor } from 'apollo-server-express';
+import { defaultFieldResolver } from 'graphql';
+import { ensureLoggedIn } from '../../helpers/auth';
 
 class AuthDirective extends SchemaDirectiveVisitor {
   visitFieldDefinition(field) {
@@ -16,4 +16,4 @@ class AuthDirective extends SchemaDirectiveVisitor {
   }
 }
 
-module.exports = AuthDirective;
+export default AuthDirective;

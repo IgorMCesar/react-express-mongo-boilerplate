@@ -1,9 +1,10 @@
-const { ApolloError } = require('apollo-server-express');
-const crypto = require('crypto');
-const { Token } = require('../models/models');
-const { sendEmail } = require('../utils/sendEmail');
+import { ApolloError } from 'apollo-server-express';
+import crypto from 'crypto';
 
-exports.sendEmailWithToken = async (user, action) => {
+import { Token } from '../models/models';
+import sendEmail from '../utils/sendEmail';
+
+export const sendEmailWithToken = async (user, action) => {
   await Token.deleteOne({ user: user._id, action });
 
   const token = await Token.create({
@@ -17,7 +18,7 @@ exports.sendEmailWithToken = async (user, action) => {
 
   return token;
 };
-exports.verifyToken = async (token, action) => {
+export const verifyToken = async (token, action) => {
   const message = 'We were unable to find a valid token. Your token may have expired.';
 
   const verifiedToken = await Token.findOne({ token, action });

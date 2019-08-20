@@ -1,13 +1,12 @@
-/* eslint-disable no-unused-vars */
-const Joi = require('joi');
-const mongoose = require('mongoose');
-const { UserInputError, ApolloError } = require('apollo-server-express');
-const { User } = require('../../models/models');
-const validators = require('../validators/validators');
-const Auth = require('../../helpers/auth');
-const { verifyToken, sendEmailWithToken } = require('../../helpers/token');
+import Joi from 'joi';
+import { UserInputError, ApolloError } from 'apollo-server-express';
 
-module.exports = {
+import { User } from '../../models/models';
+import validators from '../validators/validators';
+import * as Auth from '../../helpers/auth';
+import { verifyToken, sendEmailWithToken } from '../../helpers/token';
+
+export default {
   Query: {
     // TODO: projection, pagination, sanitization
     users: (root, args, context, info) => User.find({}),

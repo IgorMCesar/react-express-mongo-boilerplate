@@ -1,4 +1,4 @@
-const User = require('./user');
-const Token = require('./token');
+import User from './user';
+import Token from './token';
 
-module.exports = { User, Token };
+export { User, Token };
