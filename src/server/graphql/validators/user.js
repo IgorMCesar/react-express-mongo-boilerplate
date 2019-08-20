@@ -1,5 +1,7 @@
-const Joi = require('joi');
-Joi.objectId = require('joi-objectid')(Joi);
+import Joi from 'joi';
+import JoiObjectId from 'joi-objectid';
+
+Joi.objectId = JoiObjectId(Joi);
 
 const email = Joi.string()
   .min(3)
@@ -41,36 +43,36 @@ const token = Joi.string()
   .token()
   .length(32);
 
-exports.findUser = Joi.object().keys({
+export const findUser = Joi.object().keys({
   id: Joi.objectId()
 });
 
-exports.signUp = Joi.object().keys({
+export const signUp = Joi.object().keys({
   email,
   username,
   name,
   password
 });
 
-exports.LogIn = Joi.object().keys({
+export const LogIn = Joi.object().keys({
   email,
   password
 });
 
-exports.ChangePassword = Joi.object().keys({
+export const ChangePassword = Joi.object().keys({
   password,
   newPassword: password
 });
 
-exports.sendUserToken = Joi.object().keys({
+export const sendUserToken = Joi.object().keys({
   email
 });
 
-exports.verifyUser = Joi.object().keys({
+export const verifyUser = Joi.object().keys({
   token
 });
 
-exports.ChangePasswordWithToken = Joi.object().keys({
+export const ChangePasswordWithToken = Joi.object().keys({
   token,
   newPassword: password
 });

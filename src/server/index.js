@@ -1,15 +1,15 @@
-const express = require('express');
-const helmet = require('helmet');
-const mongoose = require('mongoose');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-const { ApolloServer } = require('apollo-server-express');
+import express from 'express';
+import helmet from 'helmet';
+import mongoose from 'mongoose';
+import session from 'express-session';
+import connectMongo from 'connect-mongo';
+import { ApolloServer } from 'apollo-server-express';
 
-const loggerConfig = require('./config/loggerConfig');
+import loggerConfig from './config/loggerConfig';
 
-const typeDefs = require('./graphql/schemas/schemas');
-const resolvers = require('./graphql/resolvers/resolvers');
-const schemaDirectives = require('./graphql/directives/directives');
+import typeDefs from './graphql/schemas/schemas';
+import resolvers from './graphql/resolvers/resolvers';
+import schemaDirectives from './graphql/directives/directives';
 
 const { NODE_ENV, SESSION_NAME, SESSION_SECRET, SESSION_MAX_AGE, MONGO_DB_URI, PORT } = process.env;
 
@@ -27,6 +27,7 @@ app.use(express.static('dist'));
 // }
 
 // Set User Session
+const MongoStore = connectMongo(session);
 app.use(
   session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),

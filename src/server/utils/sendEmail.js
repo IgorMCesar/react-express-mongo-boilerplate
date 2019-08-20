@@ -1,6 +1,6 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
-exports.sendEmail = async (recipient, url) => {
+const sendEmail = async (recipient, url) => {
   const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
@@ -32,3 +32,5 @@ exports.sendEmail = async (recipient, url) => {
   console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 };
+
+export default sendEmail;
