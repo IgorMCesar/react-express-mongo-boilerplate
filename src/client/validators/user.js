@@ -45,6 +45,7 @@ export const registerSchema = yup.object().shape({
     .string()
     .min(4, minMessage(4))
     .max(30, maxMessage(30))
+    .matches(/^[a-zA-Z0-9]*$/, 'Must only contain letters and numbers')
     .required(requiredMessage('Username')),
   name: yup
     .string()
