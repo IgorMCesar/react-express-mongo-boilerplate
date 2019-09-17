@@ -21,71 +21,63 @@ const LOG_OUT = gql`
   }
 `;
 
-class LoggedLayout extends React.Component {
-  handleClick = (e, LogOut) => {
+const LoggedLayout = props => {
+  const handleClick = (e, LogOut) => {
     if (e.key === 'signOut') {
       LogOut()
         .then(res => {
-          this.props.removeAuthUser();
+          props.removeAuthUser();
           message.success('Logged out successfully');
-          this.props.history.push('/');
+          props.history.push('/');
         })
         .catch(err => console.log(err));
     }
-    this.setState({
-      current: e.key
-    });
   };
 
-  render() {
-    const { children, location } = this.props;
-    return (
-      <Layout className="layout" style={{ minHeight: '100vh' }}>
-        <Header style={{ height: 'unset' }}>
-          <Mutation mutation={LOG_OUT}>
-            {(LogOut, { data, loading, error }) => {
-              return (
-                <Menu
-                  theme="dark"
-                  mode="horizontal"
-                  defaultSelectedKeys={['/']}
-                  selectedKeys={[location.pathname]}
-                  style={{ lineHeight: '65px' }}
-                  onClick={e => this.handleClick(e, LogOut)}
+  return (
+    <Layout className="layout" style={{ minHeight: '100vh' }}>
+      <Header style={{ height: 'unset' }}>
+        <Mutation mutation={LOG_OUT}>
+          {(LogOut, { data, loading, error }) => {
+            return (
+              <Menu
+                theme="dark"
+                mode="horizontal"
+                defaultSelectedKeys={['/']}
+                selectedKeys={[location.pathname]}
+                style={{ lineHeight: '65px' }}
+                onClick={e => handleClick(e, LogOut)}
+              >
+                <Menu.Item key="logo">
+                  <Link to="/">
+                    <img src="/public/images/logo.png" alt="menu" className={_s.logo} />
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="/">
+                  <Link to="/">Dashboard</Link>
+                </Menu.Item>
+                <SubMenu
+                  title={
+                    <>
+                      <Avatar size="medium" icon="user" className={_s.UserAvatar} />
+                      <Icon type="down" style={{ marginLeft: '10px' }} />
+                    </>
+                  }
+                  style={{ float: 'right' }}
                 >
-                  <Menu.Item key="logo">
-                    <Link to="/">
-                      <img src="/public/images/logo.png" alt="menu" className={_s.logo} />
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item key="/">
-                    <Link to="/">Dashboard</Link>
-                  </Menu.Item>
-                  <SubMenu
-                    title={
-                      <>
-                        <Avatar size="medium" icon="user" className={_s.UserAvatar} />
-                        <Icon type="down" style={{ marginLeft: '10px' }} />
-                      </>
-                    }
-                    style={{ float: 'right' }}
-                  >
-                    <Menu.Item key="profile">Profile</Menu.Item>
-                    <Menu.Item key="signOut">Sign Out</Menu.Item>
-                  </SubMenu>
-                </Menu>
-              );
-            }}
-          </Mutation>
-        </Header>
-        <Content className={_s.Content}>{children}</Content>
-        <Footer style={{ textAlign: 'center' }}>
-          MER(A)N - FullStack Boilerplate by IgorMCesar
-        </Footer>
-      </Layout>
-    );
-  }
-}
+                  <Menu.Item key="profile">Profile</Menu.Item>
+                  <Menu.Item key="signOut">Sign Out</Menu.Item>
+                </SubMenu>
+              </Menu>
+            );
+          }}
+        </Mutation>
+      </Header>
+      <Content className={_s.Content}>{props.children}</Content>
+      <Footer style={{ textAlign: 'center' }}>MER(A)N - FullStack Boilerplate by IgorMCesar</Footer>
+    </Layout>
+  );
+};
 
 const mapStateToProps = state => {
   return {

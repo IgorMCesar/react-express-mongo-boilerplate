@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Spin } from 'antd';
 import gql from 'graphql-tag';
@@ -22,15 +22,13 @@ const VERIFY_LOGGED_IN = gql`
   }
 `;
 
-class CallLogin extends React.Component {
-  componentDidMount() {
-    this.props.CheckIfLoggedIn();
-  }
+const CallLogin = props => {
+  useEffect(() => {
+    props.CheckIfLoggedIn();
+  }, []);
 
-  render() {
-    return this.props.children;
-  }
-}
+  return props.children;
+};
 
 const CheckIfLoggedIn = props => {
   if (props.firstAuthValidationDone) return props.children;
