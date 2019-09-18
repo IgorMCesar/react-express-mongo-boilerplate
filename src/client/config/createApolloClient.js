@@ -5,9 +5,11 @@ const client = new ApolloClient({
   credentials: 'include',
   onError: ({ graphQLErrors, networkError, reponse }) => {
     // if (graphQLErrors) Response.errors = null;
-    graphQLErrors.map(({ message, locations, path }) => {
-      // console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`);
-    });
+    if (graphQLErrors) {
+      graphQLErrors.map(({ message, locations, path }) => {
+        // console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`);
+      });
+    }
     if (networkError) console.log(`[Network error]: ${networkError}`);
   }
 });

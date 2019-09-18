@@ -1,5 +1,6 @@
 import React from 'react';
-import { graphql, compose } from 'react-apollo';
+import { useMutation } from '@apollo/react-hooks';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { withFormik, Field } from 'formik';
 import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
@@ -12,9 +13,13 @@ import { mutations } from '../../graphql/graphql';
 import EmailSent from '../EmailSent/EmailSent';
 import _s from './RegisterForm.less';
 
+// WIP: Formik will be refactored to use hooks too.
+let tempSignUp;
+
 const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus }) => {
   const { email, password, name, username } = values;
-  props.signUp({ variables: { email, password, name, username } }).then(
+
+  tempSignUp({ variables: { email, password, name, username } }).then(
     res => {
       setStatus({ email });
     },
@@ -37,6 +42,10 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
 
 const RegisterForm = props => {
   const { status, handleSubmit, isSubmitting } = props;
+
+  const [SignUp] = useMutation(mutations.SIGN_UP);
+
+  tempSignUp = SignUp;
 
   if (status && status.email) {
     return <EmailSent email={status.email} />;
@@ -110,7 +119,6 @@ const RegisterForm = props => {
 };
 
 const WrapperRegisterForm = compose(
-  graphql(mutations.SIGN_UP, { name: 'signUp' }),
   withFormik({
     validationSchema: validators.user.registerSchema,
     // validateOnChange: false,

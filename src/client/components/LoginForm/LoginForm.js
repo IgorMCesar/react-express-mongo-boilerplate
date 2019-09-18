@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, compose } from 'react-apollo';
+import { useMutation } from '@apollo/react-hooks';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { withFormik, Field } from 'formik';
 import { Form, Icon, Input, Button, Checkbox, Card, Alert, message } from 'antd';
@@ -15,9 +15,12 @@ import actions from '../../store/actions/actions';
 
 import _s from './LoginForm.less';
 
+// WIP: Formik will be refactored to use hooks too.
+let tempLogIn;
+
 const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus }) => {
   const { email, password } = values;
-  props.LogIn({ variables: { email, password } }).then(
+  tempLogIn({ variables: { email, password } }).then(
     res => {
       props.setAuthUser(res.data.LogIn);
       message.success('Logged in successfully');
@@ -37,6 +40,11 @@ const handleSubmit = async (values, { props, setErrors, setSubmitting, setStatus
 
 const LoginForm = props => {
   const { handleSubmit, errors, isSubmitting } = props;
+
+  const [LogIn] = useMutation(mutations.LOG_IN);
+
+  tempLogIn = LogIn;
+
   return (
     <Card className={_s.LoginFormCard}>
       <p style={{ fontWeight: 'bold', fontSize: '1.05rem' }}>
@@ -115,7 +123,6 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  graphql(mutations.LOG_IN, { name: 'LogIn' }),
   withFormik({
     validationSchema: validators.user.loginSchema,
     validateOnChange: false,
