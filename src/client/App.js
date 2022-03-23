@@ -1,33 +1,53 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { ConnectedRouter } from 'connected-react-router';
-import { Switch, Route } from 'react-router-dom';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import GuestRoute from './components/GuestRoute/GuestRoute';
-import CheckIfLoggedIn from './components/CheckIfLoggedIn/CheckIfLoggedIn';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Login, Registro, Home } from './pages/';
+import usuarioContexto from './state/state';
 
-import LoginPage from './pages/Login/Login';
-import RegisterPage from './pages/Register/Register';
-import DashboardPage from './pages/Dashboard/Dashboard';
-import PageNotFound from './pages/NotFound/NotFound';
+export default function App() {
+  const [user, setUser] = useState({ nombre: '', uid: '', islogged: false });
 
-const App = props => {
+  useEffect(() => {
+    // aqui pasan cosas  muy raras piter
+    const token = localStorage.getItem('token') || null;
+    const existToken = Boolean(token);
+
+    if (existToken) {
+      fetch('http://localhost:3000/api/renew', {
+        headers: {
+          token
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.ok) {
+            setUser(p => ({
+              ...p,
+              nombre: data.usuario.nombre,
+              uid: data.usuario.uid,
+              islogged: true
+            }));
+          }
+        });
+    }
+  }, []);
+
   return (
-    <ConnectedRouter history={props.history}>
-      <CheckIfLoggedIn>
-        <Switch>
-          <PrivateRoute exact path="/" component={DashboardPage} />
-          <GuestRoute exact path="/login" component={LoginPage} />
-          <GuestRoute exact path="/register" component={RegisterPage} />
-          <Route component={PageNotFound} />
-        </Switch>
-      </CheckIfLoggedIn>
-    </ConnectedRouter>
+    <usuarioContexto.Provider value={{ user, setUser }}>
+      <Router>
+        <div>
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/registro">
+              <Registro />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </usuarioContexto.Provider>
   );
-};
-
-App.propTypes = {
-  history: PropTypes.object
-};
-
-export default App;
+}

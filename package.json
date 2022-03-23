@@ -54,5 +54,7 @@
     "url": "https://github.com/IgorMCesar/react-node-boilerplate/issues"
   },
   "homepage": "https://github.com/IgorMCesar/react-node-boilerplate#readme",
-  "dependencies": {}
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }

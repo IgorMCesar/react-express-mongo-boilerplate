@@ -73,12 +73,14 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx']
   },
+  // no se ni que hice pero ya funcina
+  // si no le sabes no le muevas
   devServer: {
-    port: 3000,
+    port: 8080,
     open: true,
     historyApiFallback: true,
     proxy: {
-      '/api': 'http://localhost:8080'
+      '/api': 'http://localhost:3000'
     }
   },
   plugins: [new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/), htmlPlugin]

@@ -1,0 +1,41 @@
+body {
+  background-color: #f3f9d2;
+}
+.formulario-container {
+  max-width: 600px;
+  margin-top: 100px;
+}
+.formulario-container label {
+  color: #2f2f2f;
+}
+
+.formulario-container a:link,
+.formulario-container a:visited {
+  text-decoration: none;
+  padding: 6px 12px;
+  background-color: #93827f;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  color: #f3f9d2;
+}
+
+.formulario-container a:hover {
+  background-color: #847572;
+}
+
+.formulario {
+  /* background-color: #92b4a7; */
+  background: linear-gradient(to left bottom, #92b4a7, #bdc4a7);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.formulario a:link {
+  display: inline-block;
+}
+
+/* HOMEPAGE */
+
+.logout {
+  min-height: 0;
+}
