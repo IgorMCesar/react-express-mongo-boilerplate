@@ -6,7 +6,7 @@
     <b>
         Start your next FullStack project in seconds!
     </b>
-    <p>MER(A)N is a FullStack opinionated monorepo webapp boilerplate based on the MERN stack with Apollo GraphQL.</p>
+    <p>Hackerland is a FullStack opinionated monorepo webapp boilerplate based on the MERN stack with Apollo GraphQL.</p>
     <sub>
         Made with ❤️ by <a ref="https://github.com/IgorMCesar">IgorMCesar</a>.
     </sub>

@@ -40,14 +40,15 @@ const LoggedLayout = props => {
           selectedKeys={[location.pathname]}
           style={{ lineHeight: '65px' }}
         >
-          <Menu.Item key="logo">
+          <Menu.Item key="logo" style={{ backgroundColor: 'white' }}>
             <Link to="/">
               <img src="/public/images/logo.png" alt="menu" className={_s.logo} />
+              <img src="/public/images/logo2.png" alt="menu" className={_s.logo} />
             </Link>
           </Menu.Item>
-          <Menu.Item key="/">
+          {/* <Menu.Item key="/">
             <Link to="/">Dashboard</Link>
-          </Menu.Item>
+          </Menu.Item> */}
           <SubMenu
             title={
               <>
@@ -65,7 +66,7 @@ const LoggedLayout = props => {
         </Menu>
       </Header>
       <Content className={_s.Content}>{props.children}</Content>
-      <Footer style={{ textAlign: 'center' }}>MER(A)N - FullStack Boilerplate by IgorMCesar</Footer>
+      <Footer style={{ textAlign: 'center' }}>Hackerland ©2023</Footer>
     </Layout>
   );
 };
@@ -92,9 +93,6 @@ LoggedLayout.propTypes = {
   removeAuthUser: PropTypes.func.isRequired
 };
 
-const connectedLoggedLayout = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LoggedLayout);
+const connectedLoggedLayout = connect(mapStateToProps, mapDispatchToProps)(LoggedLayout);
 
 export default withRouter(connectedLoggedLayout);

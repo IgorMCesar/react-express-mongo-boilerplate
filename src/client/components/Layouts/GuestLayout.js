@@ -31,7 +31,9 @@ const GuestLayout = props => (
       </Menu>
     </Header>
     <Content className={_s.Content}>{props.children}</Content>
-    <Footer style={{ textAlign: 'center' }}>MER(A)N - FullStack Boilerplate by IgorMCesar</Footer>
+    <Footer style={{ textAlign: 'center' }}>
+      Hackerland - FullStack Boilerplate by IgorMCesar
+    </Footer>
   </Layout>
 );
 

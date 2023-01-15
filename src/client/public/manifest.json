@@ -1,11 +1,11 @@
 {
-  "short_name": "MER(A)N Boilerplate",
-  "name": "MER(A)N Boilerplate",
+  "short_name": "Hackerland",
+  "name": "Hackerland",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png"
+      "type": "image/ico"
     }
   ],
   "start_url": ".",
